@@ -1,0 +1,26 @@
+{
+  "name": "semester-project-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css",
+    "start": "live-server --watch=dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
+    "live-server": "^1.2.0",
+    "prettier": "^3.5.3",
+    "sass": "^1.85.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
