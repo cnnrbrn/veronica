@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "sass src/scss:dist/css && vite build",
     "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test":  "vitest",
     "watch": "sass --watch src/scss:dist/css",
     "start": "live-server --watch=dist",
     "prepare": "husky install"
@@ -24,7 +24,8 @@
     "live-server": "^1.2.0",
     "prettier": "^3.5.3",
     "sass": "^1.85.1",
-    "vite": "^6.2.1"
+    "vite": "^6.2.1",
+    "vitest": "^3.0.8"
   },
   "dependencies": {
     "bootstrap": "^5.3.3"
