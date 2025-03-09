@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "build": "sass src/scss:dist/css && vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass src/scss:dist/css",
     "watch": "sass --watch src/scss:dist/css",
     "start": "live-server --watch=dist",
     "prepare": "husky install"
@@ -15,11 +17,14 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "dotenv": "^16.4.7",
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "live-server": "^1.2.0",
     "prettier": "^3.5.3",
-    "sass": "^1.85.1"
+    "sass": "^1.85.1",
+    "vite": "^6.2.1"
   },
   "dependencies": {
     "bootstrap": "^5.3.3"
