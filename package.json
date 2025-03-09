@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "sass src/scss:dist/css && vite build",
     "preview": "vite preview",
-    "test":  "vitest",
+    "test": "vitest",
     "watch": "sass --watch src/scss:dist/css",
     "start": "live-server --watch=dist",
     "prepare": "husky install"
@@ -17,10 +17,12 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@vitest/browser": "^3.0.8",
     "dotenv": "^16.4.7",
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
+    "jsdom": "^26.0.0",
     "live-server": "^1.2.0",
     "prettier": "^3.5.3",
     "sass": "^1.85.1",
