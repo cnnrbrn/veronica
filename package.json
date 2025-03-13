@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "watch": "sass --watch src/scss:dist/css",
-    "start": "live-server --watch=dist",
+    "start": "live-server --port=5500",
     "prepare": "husky install"
   },
   "keywords": [],
