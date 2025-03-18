@@ -1,0 +1,81 @@
+// Import variables
+
+/*Custom CSS */
+/* Sørg for at body og html tar opp hele høyden av skjermen */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sørger for at innholdet i hoveddelen skyver footeren ned */
+main {
+    flex: 1; /* Tar opp all tilgjengelig plass */
+}
+
+/* Banner styling */
+.banner-box {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 488px; /* Juster høyden her */
+}
+
+/* Sikrer at bildet og teksten er like høye */
+.banner-box .row {
+    height: 100%;
+}
+
+/* Bildestørrelse og tilpassing */
+.banner-img {
+    width: 100%;
+    height: 488px;
+    object-fit: cover;
+}
+
+/* Gir avrundet kant nederst til venstre */
+.rounded-bottom-start {
+    border-bottom-left-radius: 50%;
+}
+
+.banner-box-right {
+    height: 488px;
+}
+
+
+/* Footer styling - skal alltid ligge nederst */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+/*  MEDIA QUERY for mobil */
+@media (max-width: 768px) {
+    .banner-box {
+        height: auto; /* Fjerner fast høyde og lar den tilpasse seg */
+    }
+
+    .banner-box .row {
+        flex-direction: column; /* Stabler bilde og tekst vertikalt */
+        height: auto;
+    }
+
+    .banner-img {
+        height: 300px; /* Justerer høyden på bildet for mobil */
+    }
+
+    .banner-box-right {
+        height: 300px; /* Lar tekstboksen tilpasse seg */
+        text-align: center; /* Sentrerer teksten */
+        padding: 20px;
+    }
+   
+    /* Hindrer overlapp av "Featured Auctions" */
+    .container.mt-5 {
+        margin-top: 40px !important;
+    }
+}
+
+
