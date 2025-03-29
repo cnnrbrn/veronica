@@ -27,21 +27,13 @@
 //element.classList.add("text-danger");
 //}
 //}
+export function showMessage(selector, message, type = "info") {
+  const container = document.querySelector(selector);
+  if (!container) return;
 
-export function showMessage(elementId, message, type = "success") {
-  const element = document.querySelector(elementId);
-  if (!element) {
-    console.error(`Element ${elementId} not found!`);
-    return;
-  }
-
-  element.textContent = message;
-
-  if (type === "success") {
-    element.classList.remove("text-danger");
-    element.classList.add("text-success", "alert", "alert-success");
-  } else {
-    element.classList.remove("text-success");
-    element.classList.add("text-danger", "alert", "alert-danger");
-  }
+  container.innerHTML = `
+      <div class="alert alert-${type} mt-2" role="alert">
+        ${message}
+      </div>
+    `;
 }
