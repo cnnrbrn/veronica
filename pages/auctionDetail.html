@@ -55,42 +55,54 @@
     </nav>
 
     <!-- Auksjonsdetaljer -->
-    <div class="container my-5">
-      <div class="p-4 rounded shadow-sm bg-light">
-        <div class="row g-5">
-          <div class="col-md-6">
+<div class="container my-5">
+    <div class="p-4 rounded shadow-sm bg-light">
+      <div class="row g-5">
+        <!-- Venstre bilde -->
+        <div class="col-md-6">
+          <div class="overflow-hidden banner-img-container rounded-bottom-start">
             <img
               id="auctionImage"
               src=""
               alt="Auction Image"
-              class="img-fluid rounded-bottom-start"
-              style="border-bottom-left-radius: 2rem; width: 100%; object-fit: cover;"
+              class="img-fluid banner-img"
             />
           </div>
-          <div class="col-md-6">
-            <h2 id="auctionTitle">Auction Title</h2>
-            <p class="text-muted" id="auctionOwner">By username</p>
-            <p id="auctionDescription">Description will go here...</p>
-            <div class="d-flex justify-content-between my-4">
-              <div>
-                <h5>Current Bid</h5>
-                <p id="currentBid" class="mb-0 fw-bold">0 credits</p>
-              </div>
-              <div>
-                <h5>Time Left</h5>
-                <p id="timeLeft" class="mb-0 fw-bold">0d 0h 0m 0s</p>
-              </div>
+        </div>
+  
+        <!-- Høyre detaljer -->
+        <div class="col-md-6">
+          <h2 id="auctionTitle">Auction Title</h2>
+          <p class="text-muted" id="auctionOwner">By username</p>
+          <p id="auctionDescription">Description will go here...</p>
+  
+          <div class="d-flex justify-content-between my-4">
+            <div>
+              <h5>Current Bid</h5>
+              <p id="currentBid" class="mb-0 fw-bold">$0</p>
             </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <button class="btn btn-primary" id="bidButton" data-bs-toggle="modal" data-bs-target="#bidModal">
-                Bid
-              </button>
-              <a href="../../index.html" class="btn btn-outline-secondary">Back</a>
+            <div>
+              <h5>Time Left</h5>
+              <p id="timeLeft" class="mb-0 fw-bold">0d 0h 0m 0s</p>
             </div>
+          </div>
+  
+          <div class="d-flex justify-content-between align-items-center">
+            <button
+              class="btn btn-primary"
+              id="bidButton"
+              data-bs-toggle="modal"
+              data-bs-target="#bidModal"
+            >
+              Bid
+            </button>
+            <a href="../../index.html" class="btn btn-outline-secondary">Back</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  
 
     <!-- Budhistorikk -->
     <div class="container mb-5">
