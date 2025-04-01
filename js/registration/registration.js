@@ -21,7 +21,7 @@ document
         "Registration complete. The user is logged in and redirected to the home page.",
       );
 
-      // ✅ Bruker meldingsfunksjonen fra `messages.js`
+      //Bruker meldingsfunksjonen fra `messages.js`
       showMessage(
         "#register-error",
         " Registration successful! You can now log in.",

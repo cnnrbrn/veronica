@@ -24,7 +24,7 @@ function logoutUser() {
   // Tømmer localStorage
   clearLocalStorage();
 
-  console.log("🟢 Calling showMessage to display logout message..."); //slette?
+  console.log("Calling showMessage to display logout message..."); //slette?
 
   //  Viser suksessmelding i logout-modalen
   showMessage(
@@ -33,11 +33,11 @@ function logoutUser() {
     "success",
   );
 
-  console.log("✅ showMessage function was called!"); //slette?
+  console.log("showMessage function was called!"); //slette?
 
   //  Lukk modalen og omdiriger etter 2 sekunder
   setTimeout(() => {
-    console.log("⏳ Closing modal and redirecting..."); //slette?
+    console.log("Closing modal and redirecting..."); //slette?
     const logoutModal = bootstrap.Modal.getInstance(
       document.getElementById("logoutModal"),
     );
@@ -52,7 +52,7 @@ function logoutUser() {
 // ** Event listener for confirm logout-knappen i modalen **
 //document.querySelector('#confirm-logout').addEventListener('click', logoutUser);
 
-// 👉 Legg til event listener kun når knappen finnes (altså i ekte DOM, ikke under test)
+//Legg til event listener kun når knappen finnes (altså i ekte DOM, ikke under test)
 export function setupLogoutListener() {
   const button = document.querySelector("#confirm-logout");
   if (button) {

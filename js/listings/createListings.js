@@ -131,11 +131,11 @@ async function createListing(listing) {
   const data = await response.json();
 
   if (!response.ok) {
-    console.error("❌ Feil:", data.errors || response.statusText);
+    console.error("Feil:", data.errors || response.statusText);
     return;
   }
 
-  console.log("✅ Listing sendt:", data.data.title);
+  console.log("Listing sendt:", data.data.title);
 }
 
 // Send alle 9

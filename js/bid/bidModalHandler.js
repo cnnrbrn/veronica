@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageContainer = document.querySelector("#bidMessageContainer");
     if (messageContainer) {
       messageContainer.innerHTML = "";
-      console.log("🧹 Fjernet gammel melding etter at modal ble vist");
+      console.log("Fjernet gammel melding etter at modal ble vist");
     }
 
     // Nullstill input-felt
@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (listingId) {
       listingIdInput.value = listingId;
-      console.log("📌 Modal åpnet for auksjon ID:", listingId);
+      console.log("Modal åpnet for auksjon ID:", listingId);
     } else {
-      console.warn("⚠️ Fant ikke listingId i knapp");
+      console.warn("Fant ikke listingId i knapp");
     }
   });
 
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = Number(bidAmountInput.value);
 
     if (!listingId || !amount) {
-      console.warn("⚠️ Mangler input for bud");
-      showMessage("#bidMessageContainer", "❗ Fyll inn budbeløp.", "error");
+      console.warn("Mangler input for bud");
+      showMessage("#bidMessageContainer", " Fyll inn budbeløp.", "error");
       return;
     }
 
@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Math.max(...listingData.data.bids.map((b) => b.amount))
         : 0;
 
-      console.log("📊 Nåværende høyeste bud:", currentHighestBid);
+      console.log("Nåværende høyeste bud:", currentHighestBid);
 
       await placeBid(listingId, amount, currentHighestBid);
     } catch (error) {
-      console.error("❌ Feil ved henting av auksjonsdata:", error);
+      console.error("Feil ved henting av auksjonsdata:", error);
       showMessage(
         "#bidMessageContainer",
-        `❗ Klarte ikke hente budinformasjon: ${error.message}`,
+        `Klarte ikke hente budinformasjon: ${error.message}`,
         "error",
       );
     }

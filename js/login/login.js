@@ -1,7 +1,7 @@
 /* global bootstrap */
 // Handling user interaction for the login page
 import { loginUser } from "../auth/auth.js";
-import { showMessage } from "../messages/messages.js"; // ✅ Importerer meldingsfunksjonen
+import { showMessage } from "../messages/messages.js"; //Importerer meldingsfunksjonen
 
 document
   .querySelector("#login-form")
@@ -17,20 +17,20 @@ document
       await loginUser(email, password);
       console.log("The user is logged in!");
 
-      // ✅ VISER SUKSESSMELDING
+      //VISER SUKSESSMELDING
       //const loginError = document.querySelector('#login-error');
       //loginError.textContent = ' Login successful! Redirecting...';
       //loginError.classList.remove('text-danger');
       //loginError.classList.add('text-success');
 
-      // ✅ Bruk `showMessage` for å vise suksessmeldingen
+      //Bruk `showMessage` for å vise suksessmeldingen
       showMessage(
         "#login-error",
         " Login successful! Redirecting...",
         "success",
       );
 
-      // ✅ LUKKER MODALEN AUTOMATISK ETTER 2 SEKUNDER
+      //LUKKER MODALEN AUTOMATISK ETTER 2 SEKUNDER
       setTimeout(() => {
         const loginModal = bootstrap.Modal.getInstance(
           document.getElementById("loginModal"),

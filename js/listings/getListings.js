@@ -47,7 +47,7 @@ async function fetchUserListings() {
     userListings = data.slice(0, 9);
     await fetchOtherListings();
   } catch (error) {
-    console.error("❌ Feil ved henting av brukerens auksjoner:", error);
+    console.error("Feil ved henting av brukerens auksjoner:", error);
   }
 }
 
@@ -63,7 +63,7 @@ async function fetchOtherListings() {
     );
 
     const { data } = await response.json();
-    console.log("🔍 Alle auksjoner:", data);
+    console.log("Alle auksjoner:", data);
 
     if (username) {
       otherListings = data.filter((listing) => listing.seller?.name !== username);
@@ -73,7 +73,7 @@ async function fetchOtherListings() {
 
     renderListings();
   } catch (error) {
-    console.error("❌ Feil ved henting av andres auksjoner:", error);
+    console.error("Feil ved henting av andres auksjoner:", error);
   }
 }
 
@@ -106,13 +106,16 @@ function renderListings() {
               <div class="d-flex justify-content-between">
                 <div>
                   <strong>Highest bid:</strong>
-                  <div>${highestBid} credits</div>
+                  <div>$${highestBid}</div>
                 </div>
                 <div>
                   <strong>Time left:</strong>
                   <div class="countdown" data-endsat="${endsAt}">${formatTimeLeft(endsAt)}</div>
                 </div>
               </div>
+
+              <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-primary">View</a>
+
               <button class="btn btn-${accessToken ? 'primary' : 'secondary'} w-100 mt-3"
                 ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
                 ${accessToken ? "Bid" : "Log in to bid"}
