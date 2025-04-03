@@ -1,33 +1,51 @@
-import { API_KEY } from "../config/constants.js";
+// js/profile/profile.js
+import { API_KEY, API_BASE_URL } from "../config/constants.js";
+import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
-export async function fetchUserProfile(username) {
-  const accessToken = localStorage.getItem("accessToken");
+export async function fetchUserProfile() {
+  const username = retrieveFromLocalStorage("username");
+  const accessToken = retrieveFromLocalStorage("accessToken");
 
-  if (!accessToken) {
-    console.error("❌ Ingen token funnet, brukeren er ikke logget inn.");
+  if (!username || !accessToken) {
+    console.error(" Mangler brukernavn eller token. Brukeren er ikke logget inn.");
     return;
   }
 
   try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/auction/profiles/${username}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "X-Noroff-API-Key": API_KEY,
-        },
+    const response = await fetch(`${API_BASE_URL}/auction/profiles/${username}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "X-Noroff-API-Key": API_KEY,
       },
-    );
+    });
 
-    const responseData = await response.json();
-    const credits = responseData.data.credits;
+    const { data } = await response.json();
 
-    const creditsElement = document.querySelector("#credits");
-    if (creditsElement) {
-      creditsElement.textContent = `Credits: ${credits}`;
+    // Oppdater KUN hvis elementene finnes på siden
+    const usernameEl = document.getElementById("profileUsername");
+    if (usernameEl) usernameEl.textContent = data.name || "Brukernavn";
+
+    const emailEl = document.getElementById("profileEmail");
+    if (emailEl) emailEl.textContent = data.email || "E-post ikke funnet";
+
+    const creditsEl = document.getElementById("profileCredits");
+    if (creditsEl) creditsEl.textContent = data.credits || 0;
+
+    const bioEl = document.getElementById("profileBio");
+    if (bioEl) bioEl.textContent = data.bio || "No bio yet";
+
+    const avatarEl = document.getElementById("profileAvatar");
+    if (avatarEl) avatarEl.src = data.avatar?.url || "https://via.placeholder.com/300x300?text=Avatar";
+
+    // Navbar credits vises på flere sider
+    const navbarCredits = document.getElementById("credits");
+    if (navbarCredits) {
+      navbarCredits.textContent = `Credits: ${data.credits}`;
     }
+
   } catch (error) {
-    console.error("Feil ved henting av profil:", error);
+    console.error(" Feil ved henting av brukerprofil:", error);
   }
 }
+
+fetchUserProfile();
