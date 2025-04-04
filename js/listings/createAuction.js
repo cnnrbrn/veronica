@@ -34,7 +34,7 @@ export async function createAuction() {
     }
 
     //  Vis alert først
-    alert(" Auksjonen ble opprettet!");
+    alert("Auksjonen ble opprettet!");
 
     //  Lukk modal og nullstill skjema
     document.getElementById("createAuctionForm").reset();

@@ -146,3 +146,9 @@ loadMoreBtn.addEventListener("click", () => {
 });
 
 fetchUserListings();
+
+// 👇 Dette gjør at placeBid.js kan kalle den
+window.refreshListings = async function () {
+    await fetchUserListings(); // Dette vil hente alt på nytt og re-rendre
+  };
+  
