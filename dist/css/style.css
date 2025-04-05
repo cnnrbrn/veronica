@@ -12,6 +12,19 @@ main {
   flex: 1; /* Tar opp all tilgjengelig plass */
 }
 
+.navbar-brand {
+  font-family: "Lobster", regular;
+  font-size: 1.9rem;
+}
+
+.navbar-brand span:first-child {
+  color: #D96B52;
+}
+
+.navbar-brand span:last-child {
+  color: #0C0D07;
+}
+
 /* Banner styling */
 .banner-box {
   max-width: 1400px;

@@ -1,4 +1,5 @@
 // Import variables
+@import "variables";
 
 /*Custom CSS */
 /* Sørg for at body og html tar opp hele høyden av skjermen */
@@ -12,6 +13,19 @@ html, body {
 main {
     flex: 1; /* Tar opp all tilgjengelig plass */
 }
+
+.navbar-brand {
+    font-family: 'Lobster', regular;
+    font-size: 1.9rem;
+  }
+  
+  .navbar-brand span:first-child {
+    color: $color-accent; 
+  }
+  
+  .navbar-brand span:last-child {
+    color: $color-primary-dark;  
+  }
 
 /* Banner styling */
 .banner-box {
