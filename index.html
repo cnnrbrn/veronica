@@ -26,14 +26,23 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <input type="text" class="form-control" placeholder="Search" />
-              </li>
-            </ul>
+            <ul class="navbar-nav mx-auto d-flex flex-row gap-2 align-items-center">
+                <li class="nav-item">
+                  <input type="text" id="searchInput" class="form-control" placeholder="Search listings" />
+                </li>
+                <li class="nav-item">
+                  <select id="sortSelect" class="form-select">
+                    <option value="">Sort</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="endingSoon">Ending Soon</option>
+                  </select>
+                </li>
+              </ul>
+               
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link hover-underline active" href="../../index.html">Home</a>
+                <a class="nav-link hover-underline active" href="../../index.html"><i class="fas fa-home me-2"></i>Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="pages/profile/profile.html">Profile</a>
@@ -100,9 +109,15 @@
 
     <!-- Auksjonskort vises her -->
 <div class="container my-5">
+    <h4 class="mb-4">New listings</h4>
     <div class="row" id="listing-container">
       <!-- Her fylles auksjoner inn av getListings.js -->
     </div>
+
+    <!-- ❗ Dette må stå utenfor .row og ha riktig ID -->
+<p id="noResultsMessage" class="text-center mt-4 d-none">
+    No listings found matching your search.
+  </p>
     <div class="d-flex justify-content-center mt-4">
       <button id="loadMoreBtn" class="btn btn-secondary">Show more</button>
     </div>
@@ -314,6 +329,8 @@
     <script type="module" src="js/messages/messages.js"></script>
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/listings/getListings.js"></script>
+    <script type="module" src="js/listings/filterListings.js"></script>
+    <script type="module" src="js/listings/searchListings.js"></script>
     <script type="module" src="js/bid/bidModalHandler.js"></script>
     <script type="module" src="js/profile/profile.js"></script>
     <script type="module" src="js/bid/placeBid.js"></script>
