@@ -104,9 +104,18 @@
         </div>
       </section>
     </main>
-
-    <h3 class="text-center">Last Chance</h3>
-
+  <!-- Carousel -->
+    <div class="container my-5">
+        <h3 class="text-center mb-4">Last Chance</h3>
+        <div class="position-relative">
+          <div id="customCarouselWrapper" class="custom-carousel-wrapper"></div>
+          <div class="carousel-buttons text-center mt-3">
+            <button id="prevBtn" class="btn btn-outline-dark me-2">←</button>
+            <button id="nextBtn" class="btn btn-outline-dark">→</button>
+          </div>
+        </div>
+      </div>
+      
     <!-- Auksjonskort vises her -->
 <div class="container my-5">
     <h4 class="mb-4">New listings</h4>
@@ -114,7 +123,7 @@
       <!-- Her fylles auksjoner inn av getListings.js -->
     </div>
 
-    <!-- ❗ Dette må stå utenfor .row og ha riktig ID -->
+    <!--  Dette må stå utenfor .row og ha riktig ID -->
 <p id="noResultsMessage" class="text-center mt-4 d-none">
     No listings found matching your search.
   </p>
@@ -331,6 +340,8 @@
     <script type="module" src="js/listings/getListings.js"></script>
     <script type="module" src="js/listings/filterListings.js"></script>
     <script type="module" src="js/listings/searchListings.js"></script>
+    <script type="module" src="js/carousel/fetchLastChanceListings.js"></script>
+    <script type="module" src="js/carousel/renderCarousel.js"></script>
     <script type="module" src="js/bid/bidModalHandler.js"></script>
     <script type="module" src="js/profile/profile.js"></script>
     <script type="module" src="js/bid/placeBid.js"></script>

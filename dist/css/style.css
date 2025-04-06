@@ -53,6 +53,52 @@ main {
   height: 488px;
 }
 
+/* carousel */
+.custom-carousel-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+
+.carousel-slide {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-slide img {
+  height: 300px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-slide.active img {
+  transform: scale(1.1);
+  opacity: 1;
+  border-radius: 16px;
+}
+
+.custom-carousel-wrapper {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem;
+  padding-left: calc(50% - 200px); /* Juster etter halve bildet (400px / 2) */
+  padding-right: calc(50% - 200px);
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+}
+
 /* Footer styling - skal alltid ligge nederst */
 footer {
   background-color: #343a40;

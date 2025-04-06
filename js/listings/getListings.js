@@ -129,13 +129,16 @@ export function renderListings(customListings = null) {
                     <div class="countdown" data-endsat="${endsAt}">${formatTimeLeft(endsAt)}</div>
                   </div>
                 </div>
-  
-                <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-primary">View</a>
-  
-                <button class="btn btn-${accessToken ? "primary" : "secondary"} w-100 mt-3"
-                  ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
-                  ${accessToken ? "Bid" : "Log in to bid"}
-                </button>
+                <div class="d-flex justify-content-between mt-3">
+                  <button class="btn btn-${accessToken ? "primary" : "secondary"}"
+                    ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
+                    ${accessToken ? "Bid" : "Log in to bid"}
+                  </button>
+
+                  <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-outline-primary">
+                    View
+                  </a>
+                </div> 
               </div>
             </div>
           </div>

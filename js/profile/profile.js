@@ -1,6 +1,7 @@
 // js/profile/profile.js
 import { API_KEY, API_BASE_URL } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
+import { fetchMyBids } from "./userBids.js";
 
 export async function fetchUserProfile() {
   const username = retrieveFromLocalStorage("username");
@@ -49,3 +50,5 @@ export async function fetchUserProfile() {
 }
 
 fetchUserProfile();
+
+fetchMyBids(); // ✅ Hent budene etter profilen er lastet
