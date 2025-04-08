@@ -6,10 +6,10 @@ import { placeBid } from "../bid/placeBid.js";
 async function main() {
   const params = new URLSearchParams(window.location.search);
   const listingId = params.get("id");
-  console.log(" Hentet listing ID fra URL:", listingId);
+  console.log("📌 Hentet listing ID fra URL:", listingId);
 
   if (!listingId) {
-    console.warn(" Ikke en auksjonsdetalj-side. Stopper scriptet.");
+    console.warn("❌ Ikke en auksjonsdetalj-side. Stopper scriptet.");
     return;
   }
 
@@ -31,36 +31,33 @@ async function main() {
 
 main();
 
+// 🔍 Hent auksjonsdetaljer
 async function getAuctionDetail(id) {
   try {
-    const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true`, {
+    const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true&_bidders=true`, {
       headers: {
         "X-Noroff-API-Key": API_KEY,
       },
     });
 
     const { data } = await response.json();
-    console.log(" Auksjonsdata fra API:", data);
+    console.log("📦 Auksjonsdata fra API:", data);
 
     document.getElementById("auctionTitle").textContent = data.title;
     document.getElementById("auctionOwner").textContent = `By ${data.seller?.name || "Unknown"}`;
     document.getElementById("auctionDescription").textContent = data.description;
 
-    //  Rediger-knapp-sjekk
+    // Vis edit-knapp kun for eier
     const username = retrieveFromLocalStorage("username");
     const editButton = document.getElementById("editAuctionButton");
 
-    console.log(" Knapp funnet?", editButton);
-    console.log(" Brukernavn:", username);
-    console.log(" Selger av auksjon:", data.seller?.name);
-    console.log(
-      " Samme bruker?",
-      data.seller?.name?.toLowerCase() === username?.toLowerCase()
-    );
+    console.log("🟡 Knapp funnet?", editButton);
+    console.log("👤 Brukernavn:", username);
+    console.log("🧑‍💼 Selger av auksjon:", data.seller?.name);
+    console.log("🔍 Samme bruker?", data.seller?.name?.toLowerCase() === username?.toLowerCase());
 
     if (data.seller?.name?.toLowerCase() === username?.toLowerCase()) {
       editButton.classList.remove("d-none");
-
       document.getElementById("editTitle").value = data.title || "";
       document.getElementById("editDescription").value = data.description || "";
       document.getElementById("editImage").value = data.media?.[0]?.url || "";
@@ -80,11 +77,12 @@ async function getAuctionDetail(id) {
     renderBiddingHistory(data.bids);
 
   } catch (error) {
-    console.error(" Feil ved henting av auksjon:", error);
+    console.error("💥 Feil ved henting av auksjon:", error);
     document.body.innerHTML = "<p class='text-danger'>Kunne ikke laste auksjonsdetaljer.</p>";
   }
 }
 
+// ⏳ Nedtelling
 function startCountdown(endTime) {
   const timeLeftElement = document.getElementById("timeLeft");
 
@@ -110,6 +108,7 @@ function startCountdown(endTime) {
   const timer = setInterval(updateCountdown, 1000);
 }
 
+// 💬 Vis budhistorikk med avatar
 function renderBiddingHistory(bids = []) {
   const historyContainer = document.getElementById("biddingHistory");
   historyContainer.innerHTML = "";
@@ -122,16 +121,38 @@ function renderBiddingHistory(bids = []) {
   bids
     .slice()
     .reverse()
-    .forEach((bid) => {
+    .forEach((bid, index) => {
       const bidDate = new Date(bid.created).toLocaleString();
+      const bidderName = bid.bidder?.name || "Unknown user";
+      const avatar = bid.bidder?.avatar?.url || "https://via.placeholder.com/40";
+
+      console.log(`📦 Bud #${index + 1}`, {
+        name: bidderName,
+        avatar,
+        amount: bid.amount,
+        date: bidDate,
+      });
+
       const item = document.createElement("div");
       item.className = "list-group-item";
       item.innerHTML = `
         <div class="d-flex justify-content-between align-items-center">
-          <div><strong>${bid.bidder?.name || "Unknown user"}</strong> placed a bid of $${bid.amount}</div>
+          <div class="d-flex align-items-center gap-3">
+            <img 
+              src="${avatar}" 
+              alt="${bidderName}" 
+              class="rounded-circle border border-secondary shadow-sm" 
+              width="40" height="40"
+            >
+            <div>
+              <strong>${bidderName}</strong><br>
+              <span>Bid: $${bid.amount}</span>
+            </div>
+          </div>
           <small class="text-muted">${bidDate}</small>
         </div>
       `;
+
       historyContainer.appendChild(item);
     });
 }
