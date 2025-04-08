@@ -1,5 +1,3 @@
-// js/auction/auctionDetail.js
-
 import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { fetchUserProfile } from "../profile/profile.js";
@@ -8,15 +6,15 @@ import { placeBid } from "../bid/placeBid.js";
 async function main() {
   const params = new URLSearchParams(window.location.search);
   const listingId = params.get("id");
-  console.log("Hentet listing ID fra URL:", listingId);
+  console.log(" Hentet listing ID fra URL:", listingId);
 
   if (!listingId) {
-    console.warn("❌ Ikke en auksjonsdetalj-side. Stopper scriptet.");
-    return; // ✅ Nå er dette lov
+    console.warn(" Ikke en auksjonsdetalj-side. Stopper scriptet.");
+    return;
   }
 
   const username = retrieveFromLocalStorage("username");
-  console.log("Hentet brukernavn fra localStorage:", username);
+  console.log("👤 Brukernavn fra localStorage:", username);
   if (username) fetchUserProfile(username);
 
   await getAuctionDetail(listingId);
@@ -33,22 +31,40 @@ async function main() {
 
 main();
 
-// Resten av funksjonene er uendret ⬇️
-
 async function getAuctionDetail(id) {
   try {
-    const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true`, {
+    const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true`, {
       headers: {
         "X-Noroff-API-Key": API_KEY,
       },
     });
 
     const { data } = await response.json();
-    console.log("Auksjonsdata fra API:", data);
+    console.log(" Auksjonsdata fra API:", data);
 
     document.getElementById("auctionTitle").textContent = data.title;
     document.getElementById("auctionOwner").textContent = `By ${data.seller?.name || "Unknown"}`;
     document.getElementById("auctionDescription").textContent = data.description;
+
+    //  Rediger-knapp-sjekk
+    const username = retrieveFromLocalStorage("username");
+    const editButton = document.getElementById("editAuctionButton");
+
+    console.log(" Knapp funnet?", editButton);
+    console.log(" Brukernavn:", username);
+    console.log(" Selger av auksjon:", data.seller?.name);
+    console.log(
+      " Samme bruker?",
+      data.seller?.name?.toLowerCase() === username?.toLowerCase()
+    );
+
+    if (data.seller?.name?.toLowerCase() === username?.toLowerCase()) {
+      editButton.classList.remove("d-none");
+
+      document.getElementById("editTitle").value = data.title || "";
+      document.getElementById("editDescription").value = data.description || "";
+      document.getElementById("editImage").value = data.media?.[0]?.url || "";
+    }
 
     const image = data.media?.[0]?.url || "https://via.placeholder.com/600x400?text=No+Image";
     const alt = data.media?.[0]?.alt || data.title || "Auction image";
@@ -62,8 +78,9 @@ async function getAuctionDetail(id) {
 
     startCountdown(data.endsAt);
     renderBiddingHistory(data.bids);
+
   } catch (error) {
-    console.error("Feil ved henting av auksjon:", error);
+    console.error(" Feil ved henting av auksjon:", error);
     document.body.innerHTML = "<p class='text-danger'>Kunne ikke laste auksjonsdetaljer.</p>";
   }
 }

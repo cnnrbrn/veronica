@@ -99,14 +99,22 @@
             >
               Bid
             </button>
-            <a href="../../index.html" class="btn btn-outline-secondary">Back</a>
+           
+            <!-- Denne knappen vises kun hvis det er din egen auksjon -->
+            <button
+              class="btn btn-warning d-none"
+              id="editAuctionButton"
+              data-bs-toggle="modal"
+              data-bs-target="#editAuctionModal"
+            >
+              Edit
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
   
-
     <!-- Budhistorikk -->
     <div class="container mb-5">
       <h4 class="mb-4">Bidding History</h4>
@@ -136,9 +144,40 @@
       </div>
     </div>
 
+    <!-- Edit Auction Modal -->
+<div class="modal fade" id="editAuctionModal" tabindex="-1" aria-labelledby="editAuctionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="editAuctionForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editAuctionModalLabel">Edit Auction</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="editTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="editTitle" required />
+          </div>
+          <div class="mb-3">
+            <label for="editDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="editDescription" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="editImage" class="form-label">Image URL</label>
+            <input type="url" class="form-control" id="editImage" />
+          </div>
+          <div id="editMessageContainer" class="mt-2 text-center"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
     <!-- Bootstrap og JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="../../js/auction/auctionDetail.js"></script>
+    <script type="module" src="/js/auction/editAuction.js"></script>
     <script type="module" src="../../js/bid/placeBid.js"></script>
   </body>
 </html>
