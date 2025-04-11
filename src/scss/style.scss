@@ -1,5 +1,7 @@
 // Import variables
-@import "variables";
+@import "_variables";
+@import "../../node_modules/bootstrap/scss/bootstrap"; //slette?
+@import "mixins.scss"; //slette?
 
 /*Custom CSS */
 /* Sørg for at body og html tar opp hele høyden av skjermen */
@@ -26,6 +28,105 @@ main {
   .navbar-brand span:last-child {
     color: $color-primary-dark;  
   }
+
+  // Eksempel på bruk:
+body {
+  background-color: $color-background;
+}
+
+  /* Nav */
+  .navbar .nav-link {
+    color: $color-primary-dark;
+  
+    &:hover,
+    &:focus {
+      color: $color-accent; // Hover/fokus-effekt
+    }
+  
+    &.active {
+      text-decoration: underline;  // Vis at lenken er aktiv
+      font-weight: bold;
+    }
+  }
+  
+  .navbar {
+    color: $color-primary-dark;
+    /*background-color: $color-box-background !important;*/
+  
+    span {
+      color: $color-primary-dark;
+    }
+  }
+  
+  .navbar #credits {
+    color: $color-accent;
+    font-weight: bold;
+  }
+
+  /* Logout button */
+  #logout-button {
+    background-color: $color-primary-dark;
+    color: $color-box-background; // hvit
+    border: none;
+  
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
+/* Banner buttons */
+.custom-register {
+  background-color: $color-box-background; // hvit
+  color: $color-primary-dark; // svart tekst
+  border: 1px solid $color-primary-dark;
+
+  &:hover {
+    background-color: lighten($color-box-background, 5%);
+  }
+}
+
+.custom-login {
+  background-color: $color-primary-dark; // svart
+  color: $color-box-background; // hvit tekst
+  border: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Svart knapp (bid)
+.btn-primary {
+  background-color: $color-primary-dark;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background-color: darken($color-primary-dark, 5%);
+    color: #fff;
+  }
+}
+
+// Hvit knapp (view)
+.btn-secondary {
+  background-color: $color-box-background;
+  color: $color-primary-dark;
+  border: 1px solid $color-primary-dark;
+
+  &:hover {
+    background-color: lighten($color-box-background, 5%);
+    color: $color-primary-dark;
+  }
+}
+
+// Farge for tall (budpris og nedtelling)
+.bid-amount,
+.time-left {
+  color: $color-accent;
+  font-weight: bold;
+}
+
+
 
 /* Banner styling */
 .banner-box {
@@ -100,17 +201,39 @@ main {
     justify-content: flex-start;
   }
 
+  /* About */
+  .text-accent {
+    color: $color-accent; // Dette er #D96B52 hos deg
+  }
   /* Contact */
+  .icon-accent {
+    color: $color-accent;
+  }
   
 
 /* Footer styling - skal alltid ligge nederst */
-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: auto;
+.custom-footer-link {
+  color: $color-primary-dark;
+  font-weight: bold;
+
+  &:hover {
+    color: darken($color-primary-dark, 10%);
+  }
 }
+
+.custom-footer-icon {
+  font-size: 1.6rem;
+  color: $color-accent;
+
+  &:hover {
+    color: darken($color-accent, 10%);
+  }
+}
+
+footer p {
+  color: $color-primary-dark;
+}
+
 
 /*  MEDIA QUERY for mobil */
 @media (max-width: 768px) {

@@ -122,20 +122,20 @@ export function renderListings(customListings = null) {
                 <div class="d-flex justify-content-between">
                   <div>
                     <strong>Highest bid:</strong>
-                    <div>$${highestBid}</div>
+                    <div class="bid-amount">$${highestBid}</div>
                   </div>
                   <div>
                     <strong>Time left:</strong>
-                    <div class="countdown" data-endsat="${endsAt}">${formatTimeLeft(endsAt)}</div>
+                    <div class="countdown time-left" data-endsat="${endsAt}">${formatTimeLeft(endsAt)}</div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                  <button class="btn btn-${accessToken ? "primary" : "secondary"}"
+                  <button class="btn btn btn-primary"
                     ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
                     ${accessToken ? "Bid" : "Log in to bid"}
                   </button>
 
-                  <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-outline-primary">
+                  <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-secondary">
                     View
                   </a>
                 </div> 
