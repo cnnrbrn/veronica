@@ -8,7 +8,7 @@ export async function fetchUserProfile() {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
   if (!username || !accessToken) {
-    console.error(" Mangler brukernavn eller token. Brukeren er ikke logget inn.");
+    console.error(" Missing username or token. User is not logged in.");
     return;
   }
 
@@ -22,12 +22,12 @@ export async function fetchUserProfile() {
 
     const { data } = await response.json();
 
-    // Oppdater KUN hvis elementene finnes på siden
+    // Update ONLY if the elements exist on the page
     const usernameEl = document.getElementById("profileUsername");
-    if (usernameEl) usernameEl.textContent = data.name || "Brukernavn";
+    if (usernameEl) usernameEl.textContent = data.name || "Username";
 
     const emailEl = document.getElementById("profileEmail");
-    if (emailEl) emailEl.textContent = data.email || "E-post ikke funnet";
+    if (emailEl) emailEl.textContent = data.email || "Email not found";
 
     const creditsEl = document.getElementById("profileCredits");
     if (creditsEl) creditsEl.textContent = data.credits || 0;
@@ -38,17 +38,17 @@ export async function fetchUserProfile() {
     const avatarEl = document.getElementById("profileAvatar");
     if (avatarEl) avatarEl.src = data.avatar?.url || "https://via.placeholder.com/300x300?text=Avatar";
 
-    // Navbar credits vises på flere sider
+    // Navbar credits appear on multiple pages
     const navbarCredits = document.getElementById("credits");
     if (navbarCredits) {
       navbarCredits.textContent = `Credits: ${data.credits}`;
     }
 
   } catch (error) {
-    console.error(" Feil ved henting av brukerprofil:", error);
+    console.error(" Error retrieving user profile:", error);
   }
 }
 
 fetchUserProfile();
 
-fetchMyBids(); // ✅ Hent budene etter profilen er lastet
+fetchMyBids(); //  Get bids after profile is loaded

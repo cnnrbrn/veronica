@@ -7,8 +7,8 @@ if (!accessToken) {
   throw new Error("Token mangler");
 }
 
-// Sett sluttdato 5 måneder og 3 uker frem i tid
-const endsAt = "2025-08-17T13:11:59.363788"; // Beregnet via system
+// Set end date 5 months and 3 weeks in the future
+const endsAt = "2025-08-17T13:11:59.363788"; // Calculated via system
 
 const listings = [
   {
@@ -131,14 +131,14 @@ async function createListing(listing) {
   const data = await response.json();
 
   if (!response.ok) {
-    console.error("Feil:", data.errors || response.statusText);
+    console.error("Error:", data.errors || response.statusText);
     return;
   }
 
-  console.log("Listing sendt:", data.data.title);
+  console.log("Listing sent:", data.data.title);
 }
 
-// Send alle 9
+// Send all 9
 for (const listing of listings) {
   await createListing(listing);
 }

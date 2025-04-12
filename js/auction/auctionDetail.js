@@ -6,15 +6,15 @@ import { placeBid } from "../bid/placeBid.js";
 async function main() {
   const params = new URLSearchParams(window.location.search);
   const listingId = params.get("id");
-  console.log(" Hentet listing ID fra URL:", listingId);
+  console.log(" Retrieved listing ID from URL:", listingId);
 
   if (!listingId) {
-    console.warn(" Ikke en auksjonsdetalj-side. Stopper scriptet.");
+    console.warn(" Not an auction details page. Stopping the script.");
     return;
   }
 
   const username = retrieveFromLocalStorage("username");
-  console.log("👤 Brukernavn fra localStorage:", username);
+  console.log(" Username from localStorage:", username);
   if (username) fetchUserProfile(username);
 
   await getAuctionDetail(listingId);
@@ -31,7 +31,7 @@ async function main() {
 
 main();
 
-// 🔍 Hent auksjonsdetaljer
+//  Get auction details
 async function getAuctionDetail(id) {
   try {
     const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true&_bidders=true`, {
@@ -47,14 +47,14 @@ async function getAuctionDetail(id) {
     document.getElementById("auctionOwner").textContent = `By ${data.seller?.name || "Unknown"}`;
     document.getElementById("auctionDescription").textContent = data.description;
 
-    // Vis edit-knapp kun for eier
+    // Show edit button only for owner
     const username = retrieveFromLocalStorage("username");
     const editButton = document.getElementById("editAuctionButton");
 
-    console.log(" Knapp funnet?", editButton);
-    console.log(" Brukernavn:", username);
-    console.log(" Selger av auksjon:", data.seller?.name);
-    console.log(" Samme bruker?", data.seller?.name?.toLowerCase() === username?.toLowerCase());
+    console.log(" Button found?", editButton);
+    console.log(" Username:", username);
+    console.log(" Auction seller:", data.seller?.name);
+    console.log(" Same user?", data.seller?.name?.toLowerCase() === username?.toLowerCase());
 
     if (data.seller?.name?.toLowerCase() === username?.toLowerCase()) {
       editButton.classList.remove("d-none");
@@ -63,11 +63,18 @@ async function getAuctionDetail(id) {
       document.getElementById("editImage").value = data.media?.[0]?.url || "";
     }
 
-    const image = data.media?.[0]?.url || "https://via.placeholder.com/600x400?text=No+Image";
+    const image = data.media?.[0]?.url || "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg";
     const alt = data.media?.[0]?.alt || data.title || "Auction image";
-    document.getElementById("auctionImage").src = image;
-    document.getElementById("auctionImage").alt = alt;
-
+    
+    const auctionImageEl = document.getElementById("auctionImage");
+    auctionImageEl.src = image;
+    auctionImageEl.alt = alt;
+    
+    // Add fallback if image cannot be loaded
+    auctionImageEl.onerror = function () {
+      this.src = "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg";
+    };
+    
     const highestBid = data.bids?.length > 0
       ? Math.max(...data.bids.map((bid) => bid.amount))
       : 0;
@@ -77,14 +84,14 @@ async function getAuctionDetail(id) {
     renderBiddingHistory(data.bids);
 
   } catch (error) {
-    console.error(" Feil ved henting av auksjon:", error);
-    document.body.innerHTML = "<p class='text-danger'>Kunne ikke laste auksjonsdetaljer.</p>";
+    console.error(" Error retrieving auction:", error);
+    document.body.innerHTML = "<p class='text-danger'>Could not load auction details..</p>";
   }
 }
 
-//  Nedtelling
 function startCountdown(endTime) {
   const timeLeftElement = document.getElementById("timeLeft");
+  let timer; // Define hours before using in updateCountdown
 
   function updateCountdown() {
     const now = new Date();
@@ -105,10 +112,10 @@ function startCountdown(endTime) {
   }
 
   updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
+  timer = setInterval(updateCountdown, 1000);
 }
 
-//  Vis budhistorikk med avatar
+//  Show bid history with avatar
 function renderBiddingHistory(bids = []) {
   const historyContainer = document.getElementById("biddingHistory");
   historyContainer.innerHTML = "";
@@ -126,7 +133,7 @@ function renderBiddingHistory(bids = []) {
       const bidderName = bid.bidder?.name || "Unknown user";
       const avatar = bid.bidder?.avatar?.url || "https://via.placeholder.com/40";
 
-      console.log(` Bud #${index + 1}`, {
+      console.log(` Bid #${index + 1}`, {
         name: bidderName,
         avatar,
         amount: bid.amount,

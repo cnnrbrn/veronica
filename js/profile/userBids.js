@@ -19,7 +19,7 @@ export async function fetchMyBids() {
 
     const { data } = await response.json();
 
-    // Vis kun det siste budet per listing
+    // Show only the latest bid per listing
     const latestBidsMap = new Map();
 
     data.forEach(bid => {

@@ -13,7 +13,7 @@ form.addEventListener("submit", async (e) => {
   const auctionId = new URLSearchParams(window.location.search).get("id");
   const accessToken = retrieveFromLocalStorage("accessToken");
 
-  // Legg til fallback sluttdato (kreves av Noroff API)
+  // Add fallback end date (required by Noroff API)
   const fallbackEndDate = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString();
 
   const updatedAuction = {
@@ -22,14 +22,14 @@ form.addEventListener("submit", async (e) => {
     endsAt: fallbackEndDate,
   };
 
-  //  MEDIA må være et array av objekt(er)
+  // MEDIA must be an array of object(s)
   const imageUrl = imageInput.value.trim();
   if (imageUrl !== "") {
     updatedAuction.media = [{ url: imageUrl }];
   }
 
-  // 🔍 Logg hele payloaden før du sender
-  console.log(" Prøver å sende dette til API:", updatedAuction);
+  // Log the entire payload before sending.
+  console.log(" Trying to send this to the API:", updatedAuction);
 
   try {
     const response = await fetch(`${API_BASE_URL}/auction/listings/${auctionId}`, {
@@ -45,7 +45,7 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error(" Feil ved oppdatering:", data.errors?.[0]?.message || data);
+      console.error(" Error during update:", data.errors?.[0]?.message || data);
       message.innerHTML = `
         <div class="alert alert-danger">
           Update failed: ${data.errors?.[0]?.message || "Unknown error"}
@@ -53,12 +53,12 @@ form.addEventListener("submit", async (e) => {
       return;
     }
 
-    //  Alt gikk bra!
-    console.log(" Oppdatering OK:", data);
+    // Everything went well
+    console.log(" Update OK:", data);
     message.innerHTML = `<div class="alert alert-success">Auction updated!</div>`;
     setTimeout(() => location.reload(), 1000);
   } catch (error) {
-    console.error(" Network- eller kodefeil:", error);
+    console.error(" Network or code error:", error);
     message.innerHTML = `<div class="alert alert-danger">Something went wrong. Please try again.</div>`;
   }
 });

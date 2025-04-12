@@ -47,7 +47,7 @@ async function fetchUserListings() {
     userListings = data.slice(0, 9);
     await fetchOtherListings();
   } catch (error) {
-    console.error("Feil ved henting av brukerens auksjoner:", error);
+    console.error("Error retrieving user's auctions:", error);
   }
 }
 
@@ -63,7 +63,7 @@ async function fetchOtherListings() {
     );
 
     const { data } = await response.json();
-    console.log("Alle auksjoner:", data);
+    console.log("All auctions:", data);
 
     if (username) {
       otherListings = data.filter((listing) => listing.seller?.name !== username);
@@ -73,7 +73,7 @@ async function fetchOtherListings() {
 
     renderListings();
   } catch (error) {
-    console.error("Feil ved henting av andres auksjoner:", error);
+    console.error("Error retrieving other people's auctions:", error);
   }
 }
 
@@ -89,7 +89,7 @@ export function renderListings(customListings = null) {
       ? userListings
       : otherListings.slice(0, 9);
   
-    // Vis/skjul meldingen
+    // Show/hide message
     if (messageElement) {
       if (listingsToRender.length === 0) {
         messageElement.classList.remove("d-none");
@@ -134,7 +134,6 @@ export function renderListings(customListings = null) {
                     ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
                     ${accessToken ? "Bid" : "Log in to bid"}
                   </button>
-
                   <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-secondary">
                     View
                   </a>
@@ -154,7 +153,7 @@ export function renderListings(customListings = null) {
   }
   
 
-// Plasser denne under sammen med renderListings
+// Place this below along with renderListings
 export function getAllListings() {
     return [...userListings, ...otherListings];
   }
@@ -172,9 +171,9 @@ loadMoreBtn.addEventListener("click", () => {
 
 fetchUserListings();
 
-// Dette gjør at placeBid.js kan kalle den
+// This allows placeBid.js to call it
 window.refreshListings = async function () {
-    await fetchUserListings(); // Dette vil hente alt på nytt og re-rendre
+    await fetchUserListings(); // This will re-fetch everything and re-render
   };
 
   

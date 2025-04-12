@@ -6,14 +6,14 @@ import { showMessage } from "../messages/messages.js";
 import { fetchUserProfile } from "../profile/profile.js";
 
 /**
- * Sender bud til API og oppdaterer UI
- * @param {string} listingId - ID for auksjonen
- * @param {number} amount - Budbeløp
- * @param {number} currentHighestBid - Høyeste eksisterende bud
- * @param {function} [updateAuctionView] - (valgfri) Funksjon for å oppdatere auksjonsvisning etter bud
+ * Sends bids to API and updates UI
+ * @param {string} listingId - ID for the auction
+ * @param {number} amount - Bid amount
+ * @param {number} currentHighestBid - Highest existing bid
+ * @param {function} [updateAuctionView] - (optional) Function to update auction view after bid
  */
 export async function placeBid(listingId, amount, currentHighestBid, updateAuctionView) {
-  console.log(" Starter bud-innsending...");
+  console.log(" Starting bid submission...");
   console.log("listingId:", listingId);
   console.log("amount:", amount);
   console.log("currentHighestBid:", currentHighestBid);
@@ -24,7 +24,7 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
   if (!accessToken || !username) {
     showMessage(
       "#bidMessageContainer",
-      "Du må være logget inn for å legge inn bud.",
+      "You must be logged in to place a bid.",
       "danger"
     );
     return;
@@ -33,7 +33,7 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
   if (amount <= currentHighestBid) {
     showMessage(
       "#bidMessageContainer",
-      `Budet må være høyere enn høyeste bud (${currentHighestBid} credits).`,
+      `The bid must be higher than the highest bid. (${currentHighestBid} credits).`,
       "danger"
     );
     return;
@@ -56,34 +56,34 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
     );
 
     const data = await response.json();
-    console.log(" Bud sendt, respons:", data);
+    console.log(" Bid sent, response:", data);
 
     if (!response.ok) {
-      throw new Error(data.errors?.[0]?.message || "Noe gikk galt");
+      throw new Error(data.errors?.[0]?.message || "Something went wrong");
     }
 
-    showMessage("#bidMessageContainer", " Budet ditt er lagt inn!", "success");
+    showMessage("#bidMessageContainer", " Your bid has been placed!", "success");
 
     await fetchUserProfile(username);
 
-    //  Oppdater visning på detaljside eller forside
+    //  Refresh view on detail page or front page
     if (typeof updateAuctionView === "function") {
       await updateAuctionView(listingId); // auctionDetail
     } else if (typeof window.refreshListings === "function") {
       await window.refreshListings(); // index.html
     }
 
-    //  Lukk modal
+    //  Close modal
     setTimeout(() => {
       const modalElement = document.getElementById("bidModal");
       const modalInstance = bootstrap.Modal.getInstance(modalElement);
       if (modalInstance) modalInstance.hide();
     }, 1500);
   } catch (error) {
-    console.error(" Feil ved bud:", error);
+    console.error(" Bid error:", error);
     showMessage(
       "#bidMessageContainer",
-      `Kunne ikke sende bud: ${error.message}`,
+      `Couldn't send a message: ${error.message}`,
       "danger"
     );
   }

@@ -1,7 +1,7 @@
 /* global bootstrap */
 //registration
 import { registerUser } from "../auth/auth.js";
-import { showMessage } from "../messages/messages.js"; //  Importerer meldingsfunksjonen, slette?
+import { showMessage } from "../messages/messages.js"; 
 
 document
   .querySelector("#registration-form")
@@ -21,20 +21,20 @@ document
         "Registration complete. The user is logged in and redirected to the home page.",
       );
 
-      //Bruker meldingsfunksjonen fra `messages.js`
+      // Using the message function from `messages.js`
       showMessage(
         "#register-error",
         " Registration successful! You can now log in.",
         "success",
       );
 
-      //  LUKKER MODALEN AUTOMATISK
+      //  Close modal automatically
       setTimeout(() => {
         const registerModal = bootstrap.Modal.getInstance(
           document.getElementById("registerModal"),
-        ); //slette?
-        registerModal.hide(); //slette?
-      }, 2000); // Lukker etter 2 sekunder//slette?
+        ); 
+        registerModal.hide(); 
+      }, 2000); 
     } catch (error) {
       showMessage(
         "#register-error",

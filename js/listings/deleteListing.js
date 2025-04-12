@@ -4,7 +4,7 @@ import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 export async function deleteListing(listingId) {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
-  const confirmDelete = confirm("❗ Are you sure you want to delete this auction?");
+  const confirmDelete = confirm(" Are you sure you want to delete this auction?");
   if (!confirmDelete) return;
 
   try {
@@ -21,11 +21,11 @@ export async function deleteListing(listingId) {
       throw new Error(data.errors?.[0]?.message || "Could not delete auction.");
     }
 
-    alert("🗑️ Auksjonen ble slettet!");
-    // Du kan f.eks. sende brukeren tilbake til forsiden:
+    alert(" The auction was deleted!");
+    // For example, you can send the user back to the front page:
     window.location.href = "../../index.html";
   } catch (error) {
-    console.error("❌ Delete failed:", error);
-    alert(`❌ Kunne ikke slette: ${error.message}`);
+    console.error(" Delete failed:", error);
+    alert(` Could not delete: ${error.message}`);
   }
 }

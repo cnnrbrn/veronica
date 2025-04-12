@@ -14,19 +14,19 @@ async function handleSearchAndFilter() {
   try {
     const allListings = await getAllListings();
 
-    // Filter på søk
+    // Filter on search
     let filtered = allListings.filter((listing) => {
       const title = listing.title?.toLowerCase() || "";
       const description = listing.description?.toLowerCase() || "";
       return title.includes(query) || description.includes(query);
     });
 
-    // ↕️ Sortér
+    // Sort
     const sorted = filterListings(filtered, sortBy);
 
-    // Vis resultatet
+    // Show the result
     renderListings(sorted);
   } catch (error) {
-    console.error("Feil under søk/sortering:", error);
+    console.error("Error while searching/sorting:", error);
   }
 }

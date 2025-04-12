@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../dist/css/style.css" />
   </head>
   <body>
-    <!-- Navigasjonsmeny -->
+    <!-- Navigation menu -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <a class="navbar-brand" href="../../index.html"><span>Retro</span><span>bid</span></a>
@@ -87,7 +87,6 @@
               class="img-fluid rounded-bottom-start banner-img"
             />
           </div>
-
           <!-- Text and Buttons Section (Right Side, 60%) -->
           <div
             class="col-md-7 d-flex flex-column justify-content-center align-items-start p-4 bg-light banner-text banner-box-right"
@@ -126,14 +125,13 @@
         </div>
       </div>
       
-    <!-- Auksjonskort vises her -->
+    <!-- Auction cards are displayed here -->
 <div class="container my-5">
     <h4 class="mb-4">New listings</h4>
     <div class="row" id="listing-container">
-      <!-- Her fylles auksjoner inn av getListings.js -->
+      <!-- Here auctions are filled in by getListings.js -->
     </div>
-
-    <!--  Dette må stå utenfor .row og ha riktig ID -->
+    <!-- This must be outside of .row and have the correct ID -->
 <p id="noResultsMessage" class="text-center mt-4 d-none">
     No listings found matching your search.
   </p>
@@ -163,7 +161,7 @@
           </div>
           <div class="modal-body">
             <p>Are you sure you want to log out?</p>
-            <!--  Her vises logout-melding (suksess eller feil) -->
+            <!--  This displays the logout message (success or error)-->
             <div id="logout-message" class="alert d-none text-center"></div>
           </div>
           <div class="modal-footer">
@@ -326,7 +324,7 @@
               <input type="number" class="form-control" id="bidAmount" required />
             </div>
   
-            <!-- 🔽 Flytt meldings-containeren hit -->
+            <!--  Move the message container here -->
             <div id="bidMessageContainer" class="mb-3"></div>
   
             <input type="hidden" id="listingId" />

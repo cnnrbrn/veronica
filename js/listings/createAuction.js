@@ -33,15 +33,15 @@ export async function createAuction() {
       throw new Error(data.errors?.[0]?.message || "Failed to create listing.");
     }
 
-    //  Vis alert først
+    //  Show alert first
     alert("Auksjonen ble opprettet!");
 
-    //  Lukk modal og nullstill skjema
+    //  Close modal and reset form
     document.getElementById("createAuctionForm").reset();
     const modal = bootstrap.Modal.getInstance(document.getElementById("createAuctionModal"));
     modal.hide();
 
-    //  Send bruker til forsiden etter kort tid
+    //  Send user to the front page after a short time
     setTimeout(() => {
       window.location.href = "../../index.html";
     }, 500); // 0.5 sekund

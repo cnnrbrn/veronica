@@ -7,7 +7,7 @@ export async function fetchLastChanceListings() {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
   if (!username || !accessToken) {
-    console.warn("Bruker ikke logget inn. Viser ikke karusell.");
+    console.warn("User not logged in. Not showing carousel.");
     return;
   }
 
@@ -26,10 +26,10 @@ export async function fetchLastChanceListings() {
 
     const listingsWithImages = data.filter(listing => listing.media?.length > 0);
 
-    renderCarousel(listingsWithImages.slice(0, 5)); // Vis maks 5
+    renderCarousel(listingsWithImages.slice(0, 5)); 
   } catch (error) {
-    console.error("Feil ved henting av dine 'Last Chance'-auksjoner:", error);
+    console.error("Error retrieving your 'Last Chance' auctions:", error);
   }
 }
 
-fetchLastChanceListings(); // Kjør automatisk
+fetchLastChanceListings(); 

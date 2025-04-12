@@ -7,10 +7,10 @@ export async function updateProfile() {
   const avatarInput = document.getElementById("editAvatarUrl").value.trim();
   const bio = document.getElementById("editBio").value.trim();
 
-  // Hent nåværende bilde hvis ingen ny er lagt inn
+  // Get current image if no new one has been uploaded
   const currentAvatar = document.getElementById("profileAvatar").src;
 
-  // Hvis brukeren har lagt inn ny URL, bruk den – ellers behold den gamle
+  // If the user has entered a new URL, use it – otherwise keep the old one
   const avatarUrl = avatarInput !== "" ? avatarInput : currentAvatar;
 
   try {
@@ -36,7 +36,7 @@ export async function updateProfile() {
       throw new Error(data.errors?.[0]?.message || "Could not update profile.");
     }
 
-    // Oppdater visningen i UI
+    // Refresh the view in the UI
     document.getElementById("profileAvatar").src = avatarUrl;
     document.getElementById("profileBio").textContent = bio;
     

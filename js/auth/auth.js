@@ -26,7 +26,7 @@ import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../config/constants.js";
 import { storeInLocalStorage } from "../utilities/localStorage.js";
 import { API_KEY } from "../config/constants.js";
 
-//  Importer funksjonen som henter credits
+// Import the function that retrieves credits
 import { fetchUserProfile } from "../profile/profile.js";
 /**
  * Logs in the user.
@@ -54,7 +54,7 @@ export async function loginUser(email, password) {
 
     const responseData = await response.json();
 
-    console.log("API response:", responseData); //slette?
+    console.log("API response:", responseData); 
 
     console.log("Received response data:", responseData);
 
@@ -65,7 +65,7 @@ export async function loginUser(email, password) {
     // Retrieve token from the response (now from responseData.data.accessToken)
     const token = responseData.data?.accessToken;
 
-    console.log("Extracted Token:", token); //slette?
+    console.log("Extracted Token:", token); 
 
     const username = responseData.data?.name;
     if (!token) {
@@ -78,15 +78,15 @@ export async function loginUser(email, password) {
     storeInLocalStorage("accessToken", token);
 
     console.log(
-      "Token lagret i localStorage:",
+      "Token stored in localStorage:",
       localStorage.getItem("accessToken"),
-    ); //slette?
+    ); 
 
     storeInLocalStorage("userEmail", email);
     storeInLocalStorage("username", username);
 
-    //  Hent credits etter login
-    await fetchUserProfile(username); //  Dette er nytt
+    // Get credits after login
+    await fetchUserProfile(username); 
 
     console.log("Token, username, and email saved in localStorage.");
 
@@ -143,8 +143,8 @@ export async function registerUser(userData) {
 
     console.log("Registration successful! User created:", responseData);
 
-    //  Hent credits etter registrering
-    await fetchUserProfile(userData.name); //  Dette er nytt
+    // Get credits after registration
+    await fetchUserProfile(userData.name); 
 
     console.log(
       `New user: ${responseData.data.name} (${responseData.data.email})`,

@@ -17,20 +17,20 @@ document
       await loginUser(email, password);
       console.log("The user is logged in!");
 
-      //VISER SUKSESSMELDING
+      //SHOWS SUCCESS MESSAGE
       //const loginError = document.querySelector('#login-error');
       //loginError.textContent = ' Login successful! Redirecting...';
       //loginError.classList.remove('text-danger');
       //loginError.classList.add('text-success');
 
-      //Bruk `showMessage` for å vise suksessmeldingen
+      //Use `showMessage` to display the success message
       showMessage(
         "#login-error",
         " Login successful! Redirecting...",
         "success",
       );
 
-      //LUKKER MODALEN AUTOMATISK ETTER 2 SEKUNDER
+      //CLOSE MODAL AUTOMATICALLY AFTER 2 SECONDS
       setTimeout(() => {
         const loginModal = bootstrap.Modal.getInstance(
           document.getElementById("loginModal"),

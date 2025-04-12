@@ -13,27 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = event.relatedTarget;
     const listingId = button?.getAttribute("data-bid-id");
 
-    // Fjern gamle meldinger
+    // Remove old messages
     const messageContainer = document.querySelector("#bidMessageContainer");
     if (messageContainer) {
       messageContainer.innerHTML = "";
-      console.log("Fjernet gammel melding etter at modal ble vist");
+      console.log("Removed old message after modal was displayed");
     }
 
-    // Nullstill input-felt
+    // Reset input field
     if (bidAmountInput) {
       bidAmountInput.value = "";
     }
 
     if (listingId) {
       listingIdInput.value = listingId;
-      console.log("Modal åpnet for auksjon ID:", listingId);
+      console.log("Modal opened for auction ID:", listingId);
     } else {
-      console.warn("Fant ikke listingId i knapp");
+      console.warn("Could not find listingId in button");
     }
   });
 
-  // Når budskjema sendes inn
+  // When the bid form is submitted
   bidForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = Number(bidAmountInput.value);
 
     if (!listingId || !amount) {
-      console.warn("Mangler input for bud");
-      showMessage("#bidMessageContainer", " Fyll inn budbeløp.", "error");
+      console.warn("Missing input for bid");
+      showMessage("#bidMessageContainer", " Fill in bid amount.", "error");
       return;
     }
 
@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Math.max(...listingData.data.bids.map((b) => b.amount))
         : 0;
 
-      console.log("Nåværende høyeste bud:", currentHighestBid);
+      console.log("Current highest bid:", currentHighestBid);
 
       await placeBid(listingId, amount, currentHighestBid);
     } catch (error) {
-      console.error("Feil ved henting av auksjonsdata:", error);
+      console.error("Error retrieving auction data:", error);
       showMessage(
         "#bidMessageContainer",
-        `Klarte ikke hente budinformasjon: ${error.message}`,
+        `Failed to retrieve bid information: ${error.message}`,
         "error",
       );
     }
