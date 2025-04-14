@@ -52,7 +52,7 @@ export async function fetchMyBids() {
               <h5 class="card-title">${title}</h5>
               <p><strong>Your bid:</strong> $${amount}</p>
               <p><strong>Bid placed:</strong> ${created}</p>
-              <a href="/pages/auctionDetail.html?id=${bid.listing.id}" class="btn btn-primary mt-auto">View Auction</a>
+              <a href="/pages/auctionDetail.html?id=${bid.listing.id}" class="btn btn-primary mt-auto fw-bold">View Auction</a>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-white">
       <div class="container">
         <a class="navbar-brand" href="../../index.html"><span>Retro</span><span>bid</span></a>
         <button
@@ -27,11 +27,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <input type="text" class="form-control" placeholder="Search" />
+            <li class="nav-item">   
             </li>
           </ul>
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="../../index.html">Home</a>
             </li>
@@ -49,7 +48,7 @@
             </li>
             <li class="nav-item">
               <button
-                class="btn btn-danger"
+                class="btn btn-danger ms-lg-3"
                 id="logout-button"
                 data-bs-toggle="modal"
                 data-bs-target="#logoutModal"
@@ -80,21 +79,23 @@
           <!-- Info -->
           <div class="col-md-6">
             <h2 id="profileUsername">Username</h2>
-            <p>Email: <span id="profileEmail">user@noroff.no</span></p>
-            <p>Credits: <span id="profileCredits">0</span></p>
+            <p><span class="fw-bold">Email:</span> <span id="profileEmail">user@noroff.no</span></p>
+            <p><span class="fw-bold">Credits:</span> <span id="profileCredits" class="credits-value">725</span></p>
+
+            
 
             <p id="profileBio">No bio yet</p>
 
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-3">
               <button
-                class="btn btn-primary"
+                class="btn btn-primary fw-bold"
                 data-bs-toggle="modal"
                 data-bs-target="#createAuctionModal"
               >
                 Create Auction
               </button>
               <button
-                class="btn btn-secondary"
+                class="btn btn-secondary edit-profile-btn fw-bold"
                 data-bs-toggle="modal"
                 data-bs-target="#editProfileModal"
               >
@@ -141,8 +142,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Publish</button>
+              <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary fw-bold">Publish</button>
             </div>
           </form>
         </div>
@@ -169,15 +170,15 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary fw-bold">Save Changes</button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
-    <footer class="bg-light text-center text-md-start mt-5 py-4 border-top">
+    <footer class="bg-white text-center text-md-start mt-5 py-4 border-top">
       <div class="container">
         <div class="row text-center text-md-start">
     

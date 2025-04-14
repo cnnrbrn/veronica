@@ -113,8 +113,9 @@ export function renderListings(customListings = null) {
       container.innerHTML += `
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm">
+           <a href="/pages/auctionDetail.html?id=${listing.id}">
             <img src="${image}" class="card-img-top object-fit-cover" style="height: 200px;" alt="${alt}"
-            onerror="this.onerror=null; this.src='https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg';" />
+            onerror="this.onerror=null; this.src='https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg';" /></a>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">${listing.title}</h5>
               <p class="card-text">${listing.description || "No description"}</p>
@@ -130,11 +131,11 @@ export function renderListings(customListings = null) {
                   </div>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                  <button class="btn btn btn-primary"
+                  <button class="btn btn btn-primary fw-bold"
                     ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
                     ${accessToken ? "Bid" : "Log in to bid"}
                   </button>
-                  <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-secondary">
+                  <a href="/pages/auctionDetail.html?id=${listing.id}" class="btn btn-secondary fw-bold">
                     View
                   </a>
                 </div> 

@@ -2,6 +2,8 @@
 @import "_variables";
 @import "../../node_modules/bootstrap/scss/bootstrap"; //slette?
 @import "mixins.scss"; //slette?
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,700&display=swap");
+
 
 /*Custom CSS */
 /* Sørg for at body og html tar opp hele høyden av skjermen */
@@ -29,10 +31,19 @@ main {
     color: $color-primary-dark;  
   }
 
-  // Eksempel på bruk:
 body {
   background-color: $color-background;
+  font-family: 'Montserrat', sans-serif, Arial, Helvetica,;
+  font-weight: 400;
+  font-style: normal;
+  color:$color-primary-dark;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  font-style: normal;
+}
+
 
   /* Nav */
   .navbar .nav-link {
@@ -63,11 +74,40 @@ body {
     font-weight: bold;
   }
 
+  /* Banner tekst */
+.banner-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: $color-banner;
+
+}
+
+.banner-subtext {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: italic;
+  color: $color-banner;
+
+}
+
+.retro-text {
+  color: $color-accent; // $color-accent
+}
+
+.bid-text {
+  color: $color-primary-dark; // $color-primary-dark
+}
+
+
   /* Logout button */
   #logout-button {
     background-color: $color-primary-dark;
     color: $color-box-background; // hvit
     border: none;
+
   
     &:hover {
       opacity: 0.9;
@@ -98,12 +138,12 @@ body {
 // Svart knapp (bid)
 .btn-primary {
   background-color: $color-primary-dark;
-  color: #fff;
+  color: $color-box-background;
   border: none;
 
   &:hover {
     background-color: darken($color-primary-dark, 5%);
-    color: #fff;
+    color: $color-box-background;
   }
 }
 
@@ -126,6 +166,9 @@ body {
   font-weight: bold;
 }
 
+.card-body {
+  color:$color-primary-dark
+}
 
 
 /* Banner styling */
@@ -201,6 +244,19 @@ body {
     justify-content: flex-start;
   }
 
+  /* Profile */
+ 
+  .credits-value {
+    color: $color-accent; 
+    font-style: italic;
+  }
+
+  .edit-profile-btn i {
+    color: $color-accent; 
+  }
+  
+
+  
   /* About */
   .text-accent {
     color: $color-accent; // Dette er #D96B52 hos deg
