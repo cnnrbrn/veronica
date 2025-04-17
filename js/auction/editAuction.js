@@ -2,7 +2,7 @@ import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { deleteListing } from "../listings/deleteListing.js";
 
-// ✅ Vent til DOM er klar
+//  Wait until the DOM is ready.
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("editAuctionForm");
   const titleInput = document.getElementById("editTitle");
@@ -11,19 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const message = document.getElementById("editMessageContainer");
   const deleteButton = document.getElementById("deleteAuctionButton");
 
-  // ❌ Ikke bruk `return` her med mindre vi er inni en funksjon
+  //  Don't use `return` here unless we are inside a function
   if (!form || !titleInput || !descInput || !imageInput || !message || !deleteButton) {
-    console.warn("❌ One or more form elements were not found in the DOM.");
-    return; // ✅ Nå er vi inni en funksjon (DOMContentLoaded), så det er lov
+    console.warn(" One or more form elements were not found in the DOM.");
+    return; //  Now we are inside a function (DOMContentLoaded), so it's allowed
   }
 
-  // 🗑️ DELETE
+  //  DELETE
   deleteButton.addEventListener("click", () => {
     const auctionId = new URLSearchParams(window.location.search).get("id");
     deleteListing(auctionId);
   });
 
-  // ✏️ UPDATE
+  //  UPDATE
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
 
       if (!response.ok) {
-        console.error("❌ Update error:", data.errors?.[0]?.message || data);
+        console.error(" Update error:", data.errors?.[0]?.message || data);
         message.innerHTML = `
           <div class="alert alert-danger">
             Update failed: ${data.errors?.[0]?.message || "Unknown error"}
@@ -64,11 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      console.log("✅ Update success:", data);
+      console.log(" Update success:", data);
       message.innerHTML = `<div class="alert alert-success">Auction updated!</div>`;
       setTimeout(() => location.reload(), 1000);
     } catch (error) {
-      console.error("❌ Network error:", error);
+      console.error(" Network error:", error);
       message.innerHTML = `<div class="alert alert-danger">Something went wrong. Please try again.</div>`;
     }
   });

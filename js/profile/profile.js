@@ -14,7 +14,7 @@ export async function fetchUserProfile() {
     return;
   }
 
-  showLoadingIndicator(); // 👈 Start loader
+  showLoadingIndicator(); 
 
   try {
     const response = await fetch(`${API_BASE_URL}/auction/profiles/${username}`, {
@@ -51,7 +51,7 @@ export async function fetchUserProfile() {
   } catch (error) {
     console.error(" Error retrieving user profile:", error);
   } finally {
-    hideLoadingIndicator(); // 👈 Fjern loader uansett
+    hideLoadingIndicator(); 
   }
 }
 

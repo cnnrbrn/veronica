@@ -1,7 +1,7 @@
 export function showLoadingIndicator() {
     console.log("Displaying loading indicator");
   
-    // Sjekk om den allerede finnes for å unngå flere
+    // Check if it already exists to avoid multiple
     if (document.getElementById("loading-indicator")) return;
   
     const loader = document.createElement("div");

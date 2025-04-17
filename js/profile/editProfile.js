@@ -36,15 +36,15 @@ export async function updateProfile() {
       throw new Error(data.errors?.[0]?.message || "Could not update profile.");
     }
 
-    // ✅ Oppdater UI
+    // UI
     document.getElementById("profileAvatar").src = avatarUrl;
     document.getElementById("profileBio").textContent = bio;
 
-    // ✅ Vis suksessmelding
+    //  Show success message
     const messageContainer = document.getElementById("createAuctionMessage");
     messageContainer.innerHTML = `<div class="alert alert-success">Profile updated successfully!</div>`;
 
-    // ✅ Skjul modal etter 1.5 sek og fjern melding
+    //  Hide modal after 1.5 sec and remove message
     setTimeout(() => {
       const modal = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
       modal.hide();
