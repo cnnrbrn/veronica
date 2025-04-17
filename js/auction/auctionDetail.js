@@ -2,6 +2,8 @@ import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { fetchUserProfile } from "../profile/profile.js";
 import { placeBid } from "../bid/placeBid.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
+
 
 async function main() {
   const params = new URLSearchParams(window.location.search);
@@ -33,6 +35,7 @@ main();
 
 //  Get auction details
 async function getAuctionDetail(id) {
+  showLoadingIndicator(); // 👉 Start loader
   try {
     const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true&_bidders=true`, {
       headers: {
@@ -86,6 +89,8 @@ async function getAuctionDetail(id) {
   } catch (error) {
     console.error(" Error retrieving auction:", error);
     document.body.innerHTML = "<p class='text-danger'>Could not load auction details..</p>";
+  } finally {
+    hideLoadingIndicator(); // 👉 Skjul loader uansett hva som skjer
   }
 }
 

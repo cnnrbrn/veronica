@@ -2,6 +2,8 @@
 import { API_KEY, API_BASE_URL } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { fetchMyBids } from "./userBids.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
+
 
 export async function fetchUserProfile() {
   const username = retrieveFromLocalStorage("username");
@@ -11,6 +13,8 @@ export async function fetchUserProfile() {
     console.error(" Missing username or token. User is not logged in.");
     return;
   }
+
+  showLoadingIndicator(); // 👈 Start loader
 
   try {
     const response = await fetch(`${API_BASE_URL}/auction/profiles/${username}`, {
@@ -46,6 +50,8 @@ export async function fetchUserProfile() {
 
   } catch (error) {
     console.error(" Error retrieving user profile:", error);
+  } finally {
+    hideLoadingIndicator(); // 👈 Fjern loader uansett
   }
 }
 

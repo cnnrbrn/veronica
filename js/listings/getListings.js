@@ -1,5 +1,7 @@
 import { API_KEY, API_BASE_URL, PROFILE_ENDPOINT } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
+
 
 const container = document.querySelector("#listing-container");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
@@ -29,9 +31,13 @@ function formatTimeLeft(endsAt) {
 async function fetchUserListings() {
   if (!accessToken || !username) {
     userListings = [];
+    showLoadingIndicator();
     await fetchOtherListings();
+    hideLoadingIndicator();
     return;
   }
+
+  showLoadingIndicator();
 
   try {
     const response = await fetch(
@@ -48,8 +54,11 @@ async function fetchUserListings() {
     await fetchOtherListings();
   } catch (error) {
     console.error("Error retrieving user's auctions:", error);
+  } finally {
+    hideLoadingIndicator();
   }
 }
+
 
 async function fetchOtherListings() {
   try {

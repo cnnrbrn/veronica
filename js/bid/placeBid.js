@@ -1,9 +1,9 @@
 /* global bootstrap */
-
 import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { showMessage } from "../messages/messages.js";
 import { fetchUserProfile } from "../profile/profile.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";  
 
 /**
  * Sends bids to API and updates UI
@@ -40,6 +40,7 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
   }
 
   const bid = { amount: Number(amount) };
+  showLoadingIndicator();
 
   try {
     const response = await fetch(
@@ -86,5 +87,8 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
       `Couldn't send a message: ${error.message}`,
       "danger"
     );
+  } 
+  finally {
+    hideLoadingIndicator(); 
   }
 }

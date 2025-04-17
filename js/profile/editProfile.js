@@ -1,5 +1,6 @@
 import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
 
 export async function updateProfile() {
   const accessToken = retrieveFromLocalStorage("accessToken");
@@ -7,11 +8,10 @@ export async function updateProfile() {
   const avatarInput = document.getElementById("editAvatarUrl").value.trim();
   const bio = document.getElementById("editBio").value.trim();
 
-  // Get current image if no new one has been uploaded
   const currentAvatar = document.getElementById("profileAvatar").src;
-
-  // If the user has entered a new URL, use it – otherwise keep the old one
   const avatarUrl = avatarInput !== "" ? avatarInput : currentAvatar;
+
+  showLoadingIndicator();
 
   try {
     const response = await fetch(`${API_BASE_URL}/auction/profiles/${username}`, {
@@ -36,16 +36,26 @@ export async function updateProfile() {
       throw new Error(data.errors?.[0]?.message || "Could not update profile.");
     }
 
-    // Refresh the view in the UI
+    // ✅ Oppdater UI
     document.getElementById("profileAvatar").src = avatarUrl;
     document.getElementById("profileBio").textContent = bio;
-    
-    const modal = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
-    modal.hide();
+
+    // ✅ Vis suksessmelding
+    const messageContainer = document.getElementById("createAuctionMessage");
+    messageContainer.innerHTML = `<div class="alert alert-success">Profile updated successfully!</div>`;
+
+    // ✅ Skjul modal etter 1.5 sek og fjern melding
+    setTimeout(() => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
+      modal.hide();
+      messageContainer.innerHTML = "";
+    }, 1500);
 
   } catch (error) {
     console.error(" Profile update failed:", error);
     alert("Failed to update profile: " + error.message);
+  } finally {
+    hideLoadingIndicator();
   }
 }
 
@@ -53,3 +63,4 @@ document.getElementById("editProfileForm").addEventListener("submit", (e) => {
   e.preventDefault();
   updateProfile();
 });
+
