@@ -1,39 +1,19 @@
 // Import variables
 @import "_variables";
-@import "../../node_modules/bootstrap/scss/bootstrap"; //slette?
-@import "mixins.scss"; //slette?
+@import "../../node_modules/bootstrap/scss/bootstrap"; 
+@import "mixins.scss"; 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,700&display=swap");
 
-
 /*Custom CSS */
-/* Sørg for at body og html tar opp hele høyden av skjermen */
 html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
-/* Sørger for at innholdet i hoveddelen skyver footeren ned */
-main {
-    flex: 1; /* Tar opp all tilgjengelig plass */
-}
-
-.navbar-brand {
-    font-family: 'Lobster', regular;
-    font-size: 1.9rem;
-  }
-  
-  .navbar-brand span:first-child {
-    color: $color-accent; 
-  }
-  
-  .navbar-brand span:last-child {
-    color: $color-primary-dark;  
-  }
 
 body {
   background-color: $color-background;
-  font-family: 'Montserrat', sans-serif, Arial, Helvetica,;
+  font-family: 'Montserrat', sans-serif, Arial, Helvetica;
   font-weight: 400;
   font-style: normal;
   color:$color-primary-dark;
@@ -44,44 +24,95 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
+main {
+  flex: 1; 
+}
 
-  /* Nav */
-  .navbar .nav-link {
-    color: $color-primary-dark;
+/* Nav */
+.navbar-brand {
+  font-family: 'Lobster', regular;
+  font-size: 1.9rem;
+}
   
-    &:hover,
-    &:focus {
-      color: $color-accent; // Hover/fokus-effekt
-    }
+.navbar-brand span:first-child {
+  color: $color-accent; 
+}
   
-    &.active {
-      text-decoration: underline;  // Vis at lenken er aktiv
-      font-weight: bold;
-    }
+.navbar-brand span:last-child {
+  color: $color-primary-dark;  
+}
+
+.navbar .nav-link {
+  color: $color-primary-dark;
+  
+  &:hover,
+  &:focus {
+    color: $color-accent; 
   }
   
-  .navbar {
-    color: $color-primary-dark;
-    /*background-color: $color-box-background !important;*/
-  
-    span {
-      color: $color-primary-dark;
-    }
-  }
-  
-  .navbar #credits {
-    color: $color-accent;
+  &.active {
+    text-decoration: underline; 
     font-weight: bold;
   }
+}
+  
+.navbar {
+  color: $color-primary-dark;
+  /*background-color: $color-box-background !important;*/
+  
+  span {
+    color: $color-primary-dark;
+  }
+}
+  
+.navbar #credits {
+  color: $color-accent;
+  font-weight: bold;
+}
 
-  /* Banner tekst */
+/* Logout button */
+#logout-button {
+  @include btn-dark-light;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+    
+/* Banner styling */
+.banner-box {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 488px; 
+}
+
+/* Sikrer at bildet og teksten er like høye */
+.banner-box .row {
+  height: 100%;
+}
+
+/* Bildestørrelse og tilpassing */
+.banner-img {
+  width: 100%;
+  height: 488px;
+  object-fit: cover;
+}
+
+/* Gir avrundet kant nederst til venstre */
+.rounded-bottom-start {
+  border-bottom-left-radius: 50%;
+}
+
+.banner-box-right {
+  height: 488px;
+}
+    
+/* Banner tekst */
 .banner-heading {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   font-style: italic;
   color: $color-banner;
-
 }
 
 .banner-subtext {
@@ -90,34 +121,20 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-style: italic;
   color: $color-banner;
-
 }
 
 .retro-text {
-  color: $color-accent; // $color-accent
+  color: $color-accent; 
 }
 
 .bid-text {
-  color: $color-primary-dark; // $color-primary-dark
+  color: $color-primary-dark; 
 }
 
-
-  /* Logout button */
-  #logout-button {
-    background-color: $color-primary-dark;
-    color: $color-box-background; // hvit
-    border: none;
-
-  
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-  
 /* Banner buttons */
 .custom-register {
-  background-color: $color-box-background; // hvit
-  color: $color-primary-dark; // svart tekst
+  background-color: $color-box-background; 
+  color: $color-primary-dark; 
   border: 1px solid $color-primary-dark;
 
   &:hover {
@@ -126,8 +143,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .custom-login {
-  background-color: $color-primary-dark; // svart
-  color: $color-box-background; // hvit tekst
+  background-color: $color-primary-dark; 
+  color: $color-box-background; 
   border: none;
 
   &:hover {
@@ -135,80 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-// Svart knapp (bid)
-.btn-primary {
-  background-color: $color-primary-dark;
-  color: $color-box-background;
-  border: none;
-
-  &:hover {
-    background-color: darken($color-primary-dark, 5%);
-    color: $color-box-background;
-  }
-}
-
-// Hvit knapp (view)
-.btn-secondary {
-  background-color: $color-box-background;
-  color: $color-primary-dark;
-  border: 1px solid $color-primary-dark;
-
-  &:hover {
-    background-color: lighten($color-box-background, 5%);
-    color: $color-primary-dark;
-  }
-}
-
-// Farge for tall (budpris og nedtelling)
-.bid-amount,
-.time-left {
-  color: $color-accent;
-  font-weight: bold;
-}
-
-.card-body {
-  color:$color-primary-dark
-}
-
-
-/* Banner styling */
-.banner-box {
-    max-width: 1400px;
-    margin: 0 auto;
-    height: 488px; /* Juster høyden her */
-}
-
-/* Sikrer at bildet og teksten er like høye */
-.banner-box .row {
-    height: 100%;
-}
-
-/* Bildestørrelse og tilpassing */
-.banner-img {
-    width: 100%;
-    height: 488px;
-    object-fit: cover;
-}
-
-/* Gir avrundet kant nederst til venstre */
-.rounded-bottom-start {
-    border-bottom-left-radius: 50%;
-}
-
-.banner-box-right {
-    height: 488px;
-}
-
 /* carousel */
-.custom-carousel-wrapper {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding: 1rem;
-  scroll-behavior: smooth;
-}
-
 .carousel-slide {
   flex: 0 0 auto;
   scroll-snap-align: center;
@@ -233,69 +177,103 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 16px;
 }
 .custom-carousel-wrapper {
-    display: flex;
-    overflow-x: hidden;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 1rem;
-    padding-left: calc(50% - 200px);  /* Juster etter halve bildet (400px / 2) */
-    padding-right: calc(50% - 200px);
-    scroll-behavior: smooth;
-    justify-content: flex-start;
-  }
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem;
+  padding-left: calc(50% - 200px);  
+  padding-right: calc(50% - 200px);
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+}
 
-  /* Profile */
- 
-  .credits-value {
-    color: $color-accent; 
-    font-style: italic;
-  }
+/* Auction card */
+.btn-primary {
+  background-color: $color-primary-dark;
+  color: $color-box-background;
+  border: none;
 
-  .edit-profile-btn i {
-    color: $color-accent; 
+  &:hover {
+    background-color: darken($color-primary-dark, 5%);
+    color: $color-box-background;
   }
-  
+}
 
-  
-  /* About */
-  .text-accent {
-    color: $color-accent; // Dette er #D96B52 hos deg
-  }
-  /* Contact */
-  .icon-accent {
-    color: $color-accent;
-  }
-  
-  /* Loader */
-  .spinner-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2000;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .spinner {
-    width: 3rem;
-    height: 3rem;
-    border: 5px solid #ccc;
-    border-top: 5px solid #D96B52; // Din aksentfarge!
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+.btn-secondary {
+  background-color: $color-box-background;
+  color: $color-primary-dark;
+  border: 1px solid $color-primary-dark;
 
+  &:hover {
+    background-color: lighten($color-box-background, 5%);
+    color: $color-primary-dark;
+  }
+}
+
+// Color for numbers (bid price and countdown)
+.bid-amount,
+.time-left {
+  color: $color-accent;
+  font-weight: bold;
+}
+
+.card-body {
+  color:$color-primary-dark
+}
+
+/*Edit auction */
+.btn-delete-outline {
+  @include btn-white-dark;
+}
+
+/* Profile */
+.credits-value {
+  color: $color-accent; 
+  font-style: italic;
+}
+
+.edit-profile-btn i {
+  color: $color-accent; 
+}
+  
+/* About */
+.text-accent {
+  color: $color-accent; 
+}
+
+/* Contact */
+.icon-accent {
+  color: $color-accent;
+}
+  
+/* Loader */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  @include flex-center; 
+}
+  
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 5px solid $color-grey-light;
+  border-top: 5px solid $color-accent; 
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+  
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+  
 /* Footer styling - skal alltid ligge nederst */
 .custom-footer-link {
   color: $color-primary-dark;
@@ -323,24 +301,24 @@ footer p {
 /*  MEDIA QUERY for mobil */
 @media (max-width: 768px) {
     .banner-box {
-        height: auto; /* Fjerner fast høyde og lar den tilpasse seg */
+        height: auto; 
     }
 
     .banner-box .row {
-        flex-direction: column; /* Stabler bilde og tekst vertikalt */
+        flex-direction: column; 
         height: auto;
     }
 
     .banner-img {
-        height: 300px; /* Justerer høyden på bildet for mobil */
+        height: 300px; 
     }
 
     .banner-box-right {
-        height: 300px; /* Lar tekstboksen tilpasse seg */ 
+        height: 300px; 
         padding: 20px;
     }
    
-    /* Hindrer overlapp av "Featured Auctions" */
+/* Prevents overlapping of "Featured Auctions" */
     .container.mt-5 {
         margin-top: 40px !important;
     }

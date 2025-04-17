@@ -1,0 +1,30 @@
+// Sentrer med flex
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Knapp med hvit bakgrunn og mørk tekst
+  @mixin btn-white-dark {
+    background-color: #fff;
+    color: $color-primary-dark;
+    border: 2px solid $color-primary-dark;
+  
+    &:hover {
+      background-color: $color-primary-dark;
+      color: #fff;
+    }
+  }
+  
+  // Knapp med mørk bakgrunn og lys tekst
+  @mixin btn-dark-light {
+    background-color: $color-primary-dark;
+    color: $color-box-background;
+    border: none;
+  
+    &:hover {
+      background-color: darken($color-primary-dark, 5%);
+    }
+  }
+  

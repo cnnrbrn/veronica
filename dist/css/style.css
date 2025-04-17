@@ -11846,29 +11846,10 @@ textarea.form-control-lg {
   }
 }
 /*Custom CSS */
-/* Sørg for at body og html tar opp hele høyden av skjermen */
 html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-/* Sørger for at innholdet i hoveddelen skyver footeren ned */
-main {
-  flex: 1; /* Tar opp all tilgjengelig plass */
-}
-
-.navbar-brand {
-  font-family: "Lobster", regular;
-  font-size: 1.9rem;
-}
-
-.navbar-brand span:first-child {
-  color: #D96B52;
-}
-
-.navbar-brand span:last-child {
-  color: #0C0D07;
 }
 
 body {
@@ -11884,7 +11865,24 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-style: normal;
 }
 
+main {
+  flex: 1;
+}
+
 /* Nav */
+.navbar-brand {
+  font-family: "Lobster", regular;
+  font-size: 1.9rem;
+}
+
+.navbar-brand span:first-child {
+  color: #D96B52;
+}
+
+.navbar-brand span:last-child {
+  color: #0C0D07;
+}
+
 .navbar .nav-link {
   color: #0C0D07;
 }
@@ -11907,6 +11905,47 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .navbar #credits {
   color: #D96B52;
   font-weight: bold;
+}
+
+/* Logout button */
+#logout-button {
+  background-color: #0C0D07;
+  color: #ffffff;
+  border: none;
+}
+#logout-button:hover {
+  background-color: black;
+}
+#logout-button:hover {
+  opacity: 0.9;
+}
+
+/* Banner styling */
+.banner-box {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 488px;
+}
+
+/* Sikrer at bildet og teksten er like høye */
+.banner-box .row {
+  height: 100%;
+}
+
+/* Bildestørrelse og tilpassing */
+.banner-img {
+  width: 100%;
+  height: 488px;
+  object-fit: cover;
+}
+
+/* Gir avrundet kant nederst til venstre */
+.rounded-bottom-start {
+  border-bottom-left-radius: 50%;
+}
+
+.banner-box-right {
+  height: 488px;
 }
 
 /* Banner tekst */
@@ -11934,16 +11973,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #0C0D07;
 }
 
-/* Logout button */
-#logout-button {
-  background-color: #0C0D07;
-  color: #ffffff;
-  border: none;
-}
-#logout-button:hover {
-  opacity: 0.9;
-}
-
 /* Banner buttons */
 .custom-register {
   background-color: #ffffff;
@@ -11963,74 +11992,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   opacity: 0.9;
 }
 
-.btn-primary {
-  background-color: #0C0D07;
-  color: #ffffff;
-  border: none;
-}
-.btn-primary:hover {
-  background-color: black;
-  color: #ffffff;
-}
-
-.btn-secondary {
-  background-color: #ffffff;
-  color: #0C0D07;
-  border: 1px solid #0C0D07;
-}
-.btn-secondary:hover {
-  background-color: white;
-  color: #0C0D07;
-}
-
-.bid-amount,
-.time-left {
-  color: #D96B52;
-  font-weight: bold;
-}
-
-.card-body {
-  color: #0C0D07;
-}
-
-/* Banner styling */
-.banner-box {
-  max-width: 1400px;
-  margin: 0 auto;
-  height: 488px; /* Juster høyden her */
-}
-
-/* Sikrer at bildet og teksten er like høye */
-.banner-box .row {
-  height: 100%;
-}
-
-/* Bildestørrelse og tilpassing */
-.banner-img {
-  width: 100%;
-  height: 488px;
-  object-fit: cover;
-}
-
-/* Gir avrundet kant nederst til venstre */
-.rounded-bottom-start {
-  border-bottom-left-radius: 50%;
-}
-
-.banner-box-right {
-  height: 488px;
-}
-
 /* carousel */
-.custom-carousel-wrapper {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding: 1rem;
-  scroll-behavior: smooth;
-}
-
 .carousel-slide {
   flex: 0 0 auto;
   scroll-snap-align: center;
@@ -12061,10 +12023,52 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   scroll-snap-type: x mandatory;
   gap: 1rem;
   padding: 1rem;
-  padding-left: calc(50% - 200px); /* Juster etter halve bildet (400px / 2) */
+  padding-left: calc(50% - 200px);
   padding-right: calc(50% - 200px);
   scroll-behavior: smooth;
   justify-content: flex-start;
+}
+
+/* Auction card */
+.btn-primary {
+  background-color: #0C0D07;
+  color: #ffffff;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: black;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #0C0D07;
+  border: 1px solid #0C0D07;
+}
+.btn-secondary:hover {
+  background-color: white;
+  color: #0C0D07;
+}
+
+.bid-amount,
+.time-left {
+  color: #D96B52;
+  font-weight: bold;
+}
+
+.card-body {
+  color: #0C0D07;
+}
+
+/*Edit auction */
+.btn-delete-outline {
+  background-color: #fff;
+  color: #0C0D07;
+  border: 2px solid #0C0D07;
+}
+.btn-delete-outline:hover {
+  background-color: #0C0D07;
+  color: #fff;
 }
 
 /* Profile */
@@ -12139,20 +12143,20 @@ footer p {
 /*  MEDIA QUERY for mobil */
 @media (max-width: 768px) {
   .banner-box {
-    height: auto; /* Fjerner fast høyde og lar den tilpasse seg */
+    height: auto;
   }
   .banner-box .row {
-    flex-direction: column; /* Stabler bilde og tekst vertikalt */
+    flex-direction: column;
     height: auto;
   }
   .banner-img {
-    height: 300px; /* Justerer høyden på bildet for mobil */
+    height: 300px;
   }
   .banner-box-right {
-    height: 300px; /* Lar tekstboksen tilpasse seg */
+    height: 300px;
     padding: 20px;
   }
-  /* Hindrer overlapp av "Featured Auctions" */
+  /* Prevents overlapping of "Featured Auctions" */
   .container.mt-5 {
     margin-top: 40px !important;
   }
