@@ -9,28 +9,43 @@
       rel="stylesheet"
     />
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    rel="stylesheet"
-  />
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../../dist/css/style.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-white">
       <div class="container">
-        <a class="navbar-brand" href="../../index.html"><span>Retro</span><span>bid</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <a class="navbar-brand" href="../../index.html">
+          <span>Retro</span><span>bid</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarNav">
-          <!-- Søk og sortering -->
+        <!-- Search and Sorting -->
           <div class="d-flex flex-wrap gap-2 mb-3 mb-lg-0 w-100 ms-lg-4">
-            <div class="flex-grow-1" style="max-width: 300px;">
-              <input type="text" id="searchInput" class="form-control" placeholder="Search listings" />
+            <div class="flex-grow-1 input-wrapper">
+              <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="Search listings"
+              />
             </div>
-            <div style="width: 150px;">
+            <div class="select-wrapper">
               <select id="sortSelect" class="form-select">
                 <option value="">Sort</option>
                 <option value="newest">Newest</option>
@@ -39,7 +54,7 @@
               </select>
             </div>
           </div>
-    
+
           <!-- Navigasjonslenker -->
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -58,7 +73,12 @@
               <span id="credits" class="nav-link text-nowrap">Credits: 725</span>
             </li>
             <li class="nav-item">
-              <button class="btn btn-danger ms-lg-3 fw-bold" id="logout-button" data-bs-toggle="modal" data-bs-target="#logoutModal">
+              <button
+                class="btn btn-danger ms-lg-3 fw-bold"
+                id="logout-button"
+                data-bs-toggle="modal"
+                data-bs-target="#logoutModal"
+              >
                 Logout
               </button>
             </li>
@@ -66,9 +86,8 @@
         </div>
       </div>
     </nav>
-    
+
     <main>
-        
       <!-- Banner Section -->
       <section class="container my-5 banner-box">
         <div class="row align-items-stretch">
@@ -76,68 +95,66 @@
           <div class="col-md-5 p-0 banner-img-container">
             <img
               src="/images/lpimage.jpg"
-              alt="Retro auction items"
+              alt="LP record with orange color and a hand in the background"
               class="img-fluid rounded-bottom-start banner-img"
             />
           </div>
           <!-- Text and Buttons Section (Right Side, 60%) -->
-<div class="col-md-7 d-flex flex-column justify-content-center align-items-start p-4 bg-white banner-text banner-box-right">
-  <h2 class="banner-heading">
-    Welcome to 
-    <span class="retro-text">Retro</span><span class="bid-text">bid</span>!
-  </h2>
-  <p class="banner-subtext">
-    Find, Sell, and Bid on Unique Retro Treasures.
-  </p>
-  <div class="d-flex gap-2 mt-3">
-    <button
-      class="btn custom-register me-2 fw-bold"
-      data-bs-toggle="modal"
-      data-bs-target="#registerModal"
-    >
-      Register
-    </button>
-    <button
-      class="btn custom-login fw-bold"
-      data-bs-toggle="modal"
-      data-bs-target="#loginModal"
-    >
-      Login
-    </button>
-  </div>
-</div>
-
+          <div
+            class="col-md-7 d-flex flex-column justify-content-center align-items-start p-4 bg-white banner-text banner-box-right"
+          >
+            <h2 class="banner-heading">
+              Welcome to <span class="retro-text">Retro</span><span class="bid-text">bid</span>!
+            </h2>
+            <p class="banner-subtext">Find, Sell, and Bid on Unique Retro Treasures.</p>
+            <div class="d-flex gap-2 mt-3">
+              <button
+                class="btn custom-register me-2 fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#registerModal"
+              >
+                Register
+              </button>
+              <button
+                class="btn custom-login fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+                Login
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-  <!-- Carousel -->
+
+    <!-- Carousel -->
     <div class="container my-5">
-        <h3 class="text-center mb-4">Last Chance</h3>
-        <div class="position-relative">
-          <div id="customCarouselWrapper" class="custom-carousel-wrapper"></div>
-          <div class="carousel-buttons text-center mt-3">
-            <button id="prevBtn" class="btn btn-outline-dark me-2">←</button>
-            <button id="nextBtn" class="btn btn-outline-dark">→</button>
-          </div>
+      <h3 class="text-center mb-4">Last Chance</h3>
+      <div class="position-relative">
+        <div id="customCarouselWrapper" class="custom-carousel-wrapper"></div>
+        <div class="carousel-buttons text-center mt-3">
+          <button id="prevBtn" class="btn btn-outline-dark me-2">←</button>
+          <button id="nextBtn" class="btn btn-outline-dark">→</button>
         </div>
       </div>
-      
+    </div>
+
     <!-- Auction cards are displayed here -->
-<div class="container my-5">
-    <h4 class="mb-4">New listings</h4>
-    <div class="row" id="listing-container">
-      <!-- Here auctions are filled in by getListings.js -->
+    <div class="container my-5">
+      <h4 class="mb-4">New listings</h4>
+      <div class="row" id="listing-container">
+        <!-- Here auctions are filled in by getListings.js -->
+      </div>
+      <p id="noResultsMessage" class="text-center mt-4 d-none">
+        No listings found matching your search.
+      </p>
+      <div class="d-flex justify-content-center mt-4">
+        <button id="loadMoreBtn" class="btn btn-secondary fw-bold">Show more</button>
+      </div>
     </div>
-    <!-- This must be outside of .row and have the correct ID -->
-<p id="noResultsMessage" class="text-center mt-4 d-none">
-    No listings found matching your search.
-  </p>
-    <div class="d-flex justify-content-center mt-4">
-      <button id="loadMoreBtn" class="btn btn-secondary fw-bold">Show more</button>
-    </div>
-</div>
-  
-    <!--  Logout Modal -->
+
+    <!-- Logout Modal -->
     <div
       class="modal fade"
       id="logoutModal"
@@ -158,7 +175,6 @@
           </div>
           <div class="modal-body">
             <p>Are you sure you want to log out?</p>
-            <!--  This displays the logout message (success or error)-->
             <div id="logout-message" class="alert d-none text-center"></div>
           </div>
           <div class="modal-footer">
@@ -233,8 +249,9 @@
                 data-bs-toggle="modal"
                 data-bs-target="#registerModal"
                 data-bs-dismiss="modal"
-                >Register here</a
               >
+                Register here
+              </a>
             </p>
           </div>
         </div>
@@ -305,65 +322,74 @@
       </div>
     </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="bidModalLabel">You are about to bid</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-  
-        <div class="modal-body">
-          <form id="bidForm">
-            <div class="mb-3">
-              <label for="bidAmount" class="form-label">Enter your bid amount:</label>
-              <input type="number" class="form-control" id="bidAmount" required />
-            </div>
-  
-            <!--  Move the message container here -->
-            <div id="bidMessageContainer" class="mb-3"></div>
-  
-            <input type="hidden" id="listingId" />
-          </form>
-        </div>
-  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" form="bidForm" class="btn btn-primary fw-bold">Bid</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer class="bg-white text-center text-md-start mt-5 py-4 border-top">
-    <div class="container">
-      <div class="row text-center text-md-start">
-  
-        <!-- Contact Info -->
-        <div class="col-md-4 mb-4 mb-md-0">
-          <h5><a href="pages/contact/contact.html" class="text-decoration-none custom-footer-link">Contact Us</a></h5>
-          <p class="mb-1">retrobid@gmail.com</p>
-          <p>Street 25 US 3458</p>
-        </div>
-  
-        <!-- Social Media -->
-        <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center">
-          <h5>Follow Us</h5>
-          <div class="d-flex gap-3 justify-content-center mt-2">
-            <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-instagram"></i></a>
+    <!-- Bid Modal -->
+    <div
+      class="modal fade"
+      id="bidModal"
+      tabindex="-1"
+      aria-labelledby="bidModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bidModalLabel">You are about to bid</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="bidForm">
+              <div class="mb-3">
+                <label for="bidAmount" class="form-label">Enter your bid amount:</label>
+                <input type="number" class="form-control" id="bidAmount" required />
+              </div>
+              <div id="bidMessageContainer" class="mb-3"></div>
+              <input type="hidden" id="listingId" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="submit" form="bidForm" class="btn btn-primary fw-bold">Bid</button>
           </div>
         </div>
-  
-        <!-- Copyright -->
-        <div class="col-md-4 d-flex align-items-center justify-content-md-end justify-content-center">
-          <p class="mb-0">&copy; Retrobid. All rights reserved</p>
-        </div>
-  
       </div>
     </div>
-  </footer>
+
+    <!-- Footer -->
+    <footer class="bg-white text-center text-md-start mt-5 py-4 border-top">
+      <div class="container">
+        <div class="row text-center text-md-start">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5>
+              <a href="pages/contact/contact.html" class="text-decoration-none custom-footer-link">
+                Contact Us
+              </a>
+            </h5>
+            <p class="mb-1">retrobid@gmail.com</p>
+            <p>Street 25 US 3458</p>
+          </div>
+          <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center">
+            <h5>Follow Us</h5>
+            <div class="d-flex gap-3 justify-content-center mt-2">
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-items-center justify-content-md-end justify-content-center">
+            <p class="mb-0">&copy; Retrobid. All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/auth/auth.js"></script>
     <script type="module" src="js/login/login.js"></script>
@@ -379,6 +405,6 @@
     <script type="module" src="js/bid/bidModalHandler.js"></script>
     <script type="module" src="js/profile/profile.js"></script>
     <script type="module" src="js/bid/placeBid.js"></script>
-   <!--<script type="module" src="js/listings/createListings.js"></script> -->
+    <!-- <script type="module" src="js/listings/createListings.js"></script> -->
   </body>
 </html>

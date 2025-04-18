@@ -42,6 +42,14 @@ main {
   color: $color-primary-dark;  
 }
 
+.input-wrapper {
+  max-width: 300px;
+}
+.select-wrapper {
+  width: 150px;
+}
+
+
 .navbar .nav-link {
   color: $color-primary-dark;
   
@@ -236,7 +244,13 @@ main {
 .edit-profile-btn i {
   color: $color-accent; 
 }
-  
+
+#profileAvatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+ 
 /* About */
 .text-accent {
   color: $color-accent; 
@@ -246,7 +260,11 @@ main {
 .icon-accent {
   color: $color-accent;
 }
-  
+
+.contact-form-wrapper {
+  max-width: 1000px;
+}
+
 /* Loader */
 .spinner-overlay {
   position: fixed;

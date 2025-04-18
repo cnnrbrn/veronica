@@ -17,7 +17,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/6873715/pexels-photo-6873715.jpeg",
-        alt: "LP record",
+        alt: "LP record with orange color and a hand in the background",
       },
     ],
     endsAt,
@@ -29,7 +29,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/6293133/pexels-photo-6293133.jpeg",
-        alt: "Cassette tape",
+        alt: "Orange cassette tape",
       },
     ],
     endsAt,
@@ -41,7 +41,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/7420960/pexels-photo-7420960.jpeg",
-        alt: "Olympus Camera",
+        alt: "Black and silver Olympus camera",
       },
     ],
     endsAt,
@@ -53,7 +53,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/9201279/pexels-photo-9201279.jpeg",
-        alt: "Super Nintendo Controller",
+        alt: "Grey super Nintendo controller",
       },
     ],
     endsAt,
@@ -64,7 +64,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/12341035/pexels-photo-12341035.jpeg",
-        alt: "VHS Cassette",
+        alt: "Black VHS cassette",
       },
     ],
     endsAt,
@@ -75,7 +75,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/17695480/pexels-photo-17695480/free-photo-of-old-fashioned-radio.jpeg",
-        alt: "Old Radio",
+        alt: "Brown and silver old radio",
       },
     ],
     endsAt,
@@ -87,7 +87,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/13745412/pexels-photo-13745412.jpeg",
-        alt: "Old Books",
+        alt: "Old books in brown and blue with a peach colored background",
       },
     ],
     endsAt,
@@ -98,7 +98,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/31159674/pexels-photo-31159674/free-photo-of-close-up-of-classical-guitar-in-soft-light.jpeg",
-        alt: "Acoustic Guitar",
+        alt: "Acoustic guitar",
       },
     ],
     endsAt,
@@ -110,7 +110,7 @@ const listings = [
     media: [
       {
         url: "https://images.pexels.com/photos/16369624/pexels-photo-16369624/free-photo-of-guitar-and-cords.jpeg",
-        alt: "Electric Guitar",
+        alt: "Brown electric guitar",
       },
     ],
     endsAt,
