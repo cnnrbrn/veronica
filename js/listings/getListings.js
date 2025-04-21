@@ -183,7 +183,7 @@ export function renderListings(customListings = null) {
                   </div>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                  <button class="btn btn btn-primary fw-bold"
+                  <button class="btn btn-primary fw-bold"
                     ${accessToken ? `data-bs-toggle="modal" data-bs-target="#bidModal" data-bid-id="${listing.id}"` : "disabled"}>
                     ${accessToken ? "Bid" : "Log in to bid"}
                   </button>

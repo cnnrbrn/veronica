@@ -11915,19 +11915,6 @@ main {
   font-weight: bold;
 }
 
-/* Logout button */
-#logout-button {
-  background-color: #0C0D07;
-  color: #ffffff;
-  border: none;
-}
-#logout-button:hover {
-  background-color: black;
-}
-#logout-button:hover {
-  opacity: 0.9;
-}
-
 /* Banner styling */
 .banner-box {
   max-width: 1400px;
@@ -11935,19 +11922,17 @@ main {
   height: 488px;
 }
 
-/* Sikrer at bildet og teksten er like høye */
+/* Ensures that the image and text are the same height */
 .banner-box .row {
   height: 100%;
 }
 
-/* Bildestørrelse og tilpassing */
 .banner-img {
   width: 100%;
   height: 488px;
   object-fit: cover;
 }
 
-/* Gir avrundet kant nederst til venstre */
 .rounded-bottom-start {
   border-bottom-left-radius: 50%;
 }
@@ -11979,25 +11964,6 @@ main {
 
 .bid-text {
   color: #0C0D07;
-}
-
-/* Banner buttons */
-.custom-register {
-  background-color: #ffffff;
-  color: #0C0D07;
-  border: 1px solid #0C0D07;
-}
-.custom-register:hover {
-  background-color: white;
-}
-
-.custom-login {
-  background-color: #0C0D07;
-  color: #ffffff;
-  border: none;
-}
-.custom-login:hover {
-  opacity: 0.9;
 }
 
 /* carousel */
@@ -12037,27 +12003,42 @@ main {
   justify-content: flex-start;
 }
 
-/* Auction card */
-.btn-primary {
+/* Buttons */
+.btn-primary,
+.custom-login,
+#logout-button {
   background-color: #0C0D07;
   color: #ffffff;
-  border: none;
+  border: 2px solid #0C0D07;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  cursor: pointer;
 }
-.btn-primary:hover {
-  background-color: black;
-  color: #ffffff;
-}
-
-.btn-secondary {
+.btn-primary:hover,
+.custom-login:hover,
+#logout-button:hover {
   background-color: #ffffff;
   color: #0C0D07;
-  border: 1px solid #0C0D07;
-}
-.btn-secondary:hover {
-  background-color: white;
-  color: #0C0D07;
+  border-color: #0C0D07;
+  cursor: pointer;
 }
 
+.btn-secondary,
+.custom-register,
+.btn-delete-outline {
+  background-color: #fff;
+  color: #0C0D07;
+  border: 2px solid #0C0D07;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover,
+.custom-register:hover,
+.btn-delete-outline:hover {
+  background-color: #0C0D07;
+  color: #fff;
+}
+
+/* Auction card */
 .bid-amount,
 .time-left {
   color: #D96B52;
@@ -12068,18 +12049,7 @@ main {
   color: #0C0D07;
 }
 
-/*Edit auction */
-.btn-delete-outline {
-  background-color: #fff;
-  color: #0C0D07;
-  border: 2px solid #0C0D07;
-}
-.btn-delete-outline:hover {
-  background-color: #0C0D07;
-  color: #fff;
-}
-
-/* Profile */
+/* Headings */
 .username-heading,
 .auction-title-heading,
 .contact-heading,
@@ -12099,6 +12069,7 @@ main {
   font-style: italic;
 }
 
+/* Profile */
 .edit-profile-btn i {
   color: #D96B52;
 }
@@ -12151,28 +12122,26 @@ main {
     transform: rotate(360deg);
   }
 }
-/* Footer styling - skal alltid ligge nederst */
+/* Footer styling */
 .custom-footer-link {
   color: #0C0D07;
   font-weight: bold;
 }
 .custom-footer-link:hover {
-  color: black;
+  color: rgb(203.336492891, 74.0473933649, 44.663507109);
+  cursor: pointer;
 }
 
 .custom-footer-icon {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #D96B52;
-}
-.custom-footer-icon:hover {
-  color: rgb(203.336492891, 74.0473933649, 44.663507109);
 }
 
 footer p {
   color: #0C0D07;
 }
 
-/*  MEDIA QUERY for mobil */
+/* MEDIA QUERY for mobile */
 @media (max-width: 768px) {
   .banner-box {
     height: auto;

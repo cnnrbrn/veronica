@@ -1,15 +1,16 @@
-// Sentrer med flex
+// Center with fle
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  // Knapp med hvit bakgrunn og mørk tekst
-  @mixin btn-white-dark {
+// Button with white background and dark text
+@mixin btn-white-dark {
     background-color: #fff;
     color: $color-primary-dark;
     border: 2px solid $color-primary-dark;
+    transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
   
     &:hover {
       background-color: $color-primary-dark;
@@ -17,14 +18,30 @@
     }
   }
   
-  // Knapp med mørk bakgrunn og lys tekst
-  @mixin btn-dark-light {
-    background-color: $color-primary-dark;
-    color: $color-box-background;
-    border: none;
+// Button with dark background and light text – which is inverted on hover
+@mixin btn-dark-light {
+    background-color: $color-primary-dark; 
+    color: $color-box-background; 
+    border: 2px solid $color-primary-dark;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   
     &:hover {
-      background-color: darken($color-primary-dark, 5%);
+      background-color: $color-box-background;
+      color: $color-primary-dark; 
+      border-color: $color-primary-dark;
+      cursor: pointer;
     }
+  }
+  
+ // Large heading (eg h2)
+@mixin heading-large {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+ // Medium heading (eg h3)
+@mixin heading-medium {
+    font-size: 1.5rem;
+    font-weight: 700;
   }
   
