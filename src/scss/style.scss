@@ -208,6 +208,11 @@ main {
   font-style: italic;
 }
 
+/* Auction detail */
+.my-custom-dark {
+  color: $color-primary-dark;
+}
+
 /* Profile */
 .edit-profile-btn i {
   color: $color-accent; 
@@ -218,7 +223,7 @@ main {
   height: 300px;
   object-fit: cover;
 }
- 
+
 /* About */
 .text-accent {
   color: $color-accent; 

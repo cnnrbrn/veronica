@@ -166,7 +166,7 @@ function renderBiddingHistory(bids = []) {
   historyContainer.innerHTML = "";
 
   if (bids.length === 0) {
-    historyContainer.innerHTML = "<p class='text-muted'>No bids yet.</p>";
+    historyContainer.innerHTML = "<p class='my-custom-dark'>No bids yet.</p>";
     return;
   }
 

@@ -11876,7 +11876,7 @@ main {
 }
 
 .navbar-brand span:first-child {
-  color: #D96B52;
+  color: #C1532F;
 }
 
 .navbar-brand span:last-child {
@@ -11895,7 +11895,7 @@ main {
   color: #0C0D07;
 }
 .navbar .nav-link:hover, .navbar .nav-link:focus {
-  color: #D96B52;
+  color: #C1532F;
 }
 .navbar .nav-link.active {
   text-decoration: underline;
@@ -11911,7 +11911,7 @@ main {
 }
 
 .navbar #credits {
-  color: #D96B52;
+  color: #C1532F;
   font-weight: bold;
 }
 
@@ -11947,7 +11947,7 @@ main {
   font-size: 2.5rem;
   font-weight: 700;
   font-style: italic;
-  color: #997f6a;
+  color: #89715D;
 }
 
 .banner-subtext {
@@ -11955,11 +11955,11 @@ main {
   font-size: 1.25rem;
   font-weight: 700;
   font-style: italic;
-  color: #997f6a;
+  color: #89715D;
 }
 
 .retro-text {
-  color: #D96B52;
+  color: #C1532F;
 }
 
 .bid-text {
@@ -12041,7 +12041,7 @@ main {
 /* Auction card */
 .bid-amount,
 .time-left {
-  color: #D96B52;
+  color: #C1532F;
   font-weight: bold;
 }
 
@@ -12065,13 +12065,18 @@ main {
 }
 
 .credits-value {
-  color: #D96B52;
+  color: #C1532F;
   font-style: italic;
+}
+
+/* Auction detail */
+.my-custom-dark {
+  color: #0C0D07;
 }
 
 /* Profile */
 .edit-profile-btn i {
-  color: #D96B52;
+  color: #C1532F;
 }
 
 #profileAvatar {
@@ -12082,12 +12087,12 @@ main {
 
 /* About */
 .text-accent {
-  color: #D96B52;
+  color: #C1532F;
 }
 
 /* Contact */
 .icon-accent {
-  color: #D96B52;
+  color: #C1532F;
 }
 
 .contact-form-wrapper {
@@ -12112,7 +12117,7 @@ main {
   width: 3rem;
   height: 3rem;
   border: 5px solid #ccc;
-  border-top: 5px solid #D96B52;
+  border-top: 5px solid #C1532F;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -12128,13 +12133,13 @@ main {
   font-weight: bold;
 }
 .custom-footer-link:hover {
-  color: rgb(203.336492891, 74.0473933649, 44.663507109);
+  color: rgb(151.9875, 65.3625, 37.0125);
   cursor: pointer;
 }
 
 .custom-footer-icon {
   font-size: 1.5rem;
-  color: #D96B52;
+  color: #C1532F;
 }
 
 footer p {
