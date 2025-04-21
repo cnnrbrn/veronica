@@ -1,3 +1,19 @@
+/**
+ * Renders a custom image carousel for auction listings.
+ *
+ * Adds clickable images to a wrapper element, scrolls between them with buttons,
+ * and centers the active image.
+ *
+ * @function renderCarousel
+ * @param {Array<Object>} listings - Array of listing objects, each with an optional media array.
+ *
+ * @example
+ * renderCarousel([
+ *   { id: "abc123", title: "Sofa", media: [{ url: "https://..." }] },
+ *   { id: "def456", title: "Chair", media: [{ url: "https://..." }] }
+ * ]);
+ */
+
 export function renderCarousel(listings) {
     const wrapper = document.querySelector("#customCarouselWrapper");
     if (!wrapper || !listings.length) return;

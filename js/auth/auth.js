@@ -1,26 +1,3 @@
-//import { URL } from "../../constants/api.js"; // Endret sti om constants ligger et annet sted
-
-//export async function register(user) {
-//const url = `${URL}auth/register`;
-
-//const options = {
-//method: "POST",
-//headers: {
-//"Content-Type": "application/json",
-//},
-//body: JSON.stringify(user),
-//};
-
-//const response = await fetch(url, options);
-//const json = await response.json();
-
-//if (!response.ok) {
-//throw new Error("Registration failed");
-//}
-
-//return json;
-//}
-
 // Handles API calls for login and registration
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../config/constants.js";
 import { storeInLocalStorage } from "../utilities/localStorage.js";
@@ -56,8 +33,6 @@ export async function loginUser(email, password) {
 
     console.log("API response:", responseData); 
 
-    console.log("Received response data:", responseData);
-
     if (!response.ok) {
       throw new Error(`Login failed with status ${response.status}`);
     }
@@ -90,8 +65,8 @@ export async function loginUser(email, password) {
 
     console.log("Token, username, and email saved in localStorage.");
 
-    // Redirect to the feed page
-    window.location.href = "index.html"; //stoppe midlertidig
+    // Redirect to homepage after login
+    window.location.href = "index.html"; 
   } catch (error) {
     console.error("Error logging in:", error);
     throw error;

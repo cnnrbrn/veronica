@@ -1,6 +1,22 @@
 import { API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
+/**
+ * Batch-uploads 9 predefined auction listings to the Noroff API.
+ *
+ * All listings have:
+ * - title
+ * - description
+ * - media (image URL and alt text)
+ * - static `endsAt` timestamp set in the future
+ *
+ * Each listing is sent using a `POST` request.
+ *
+ * @example
+ * // This script runs on load and uploads the 9 listings
+ */
+
+
 const accessToken = retrieveFromLocalStorage("accessToken");
 if (!accessToken) {
   alert("Du må være logget inn for å sende inn auksjoner.");
@@ -116,6 +132,13 @@ const listings = [
     endsAt,
   },
 ];
+
+/**
+ * Sends a single listing to the Noroff API.
+ *
+ * @param {Object} listing - The listing object with title, description, media, and endsAt.
+ * @returns {Promise<void>}
+ */
 
 async function createListing(listing) {
   const response = await fetch("https://v2.api.noroff.dev/auction/listings", {

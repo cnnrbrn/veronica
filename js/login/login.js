@@ -1,11 +1,23 @@
 /* global bootstrap */
-// Handling user interaction for the login page
 import { loginUser } from "../auth/auth.js";
-import { showMessage } from "../messages/messages.js"; //Importerer meldingsfunksjonen
+import { showMessage } from "../messages/messages.js"; 
 
-document
-  .querySelector("#login-form")
-  .addEventListener("submit", async (event) => {
+/**
+ * Handles the login form submission.
+ *
+ * - Prevents default form behavior
+ * - Extracts email and password
+ * - Calls the `loginUser` function to attempt login
+ * - Shows success or error messages
+ * - Closes the modal on success after a short delay
+ *
+ * @async
+ * @function
+ * @param {Event} event - The form submission event
+ * @returns {Promise<void>}
+ */
+
+document.querySelector("#login-form").addEventListener("submit", async (event) => {
     event.preventDefault();
     console.log("Submit button clicked. Trying to log in...");
 
@@ -17,36 +29,20 @@ document
       await loginUser(email, password);
       console.log("The user is logged in!");
 
-      //SHOWS SUCCESS MESSAGE
-      //const loginError = document.querySelector('#login-error');
-      //loginError.textContent = ' Login successful! Redirecting...';
-      //loginError.classList.remove('text-danger');
-      //loginError.classList.add('text-success');
-
       //Use `showMessage` to display the success message
-      showMessage(
-        "#login-error",
-        " Login successful! Redirecting...",
-        "success",
-      );
+      showMessage("#login-error", "Login successful! Redirecting...", "success");
 
       //CLOSE MODAL AUTOMATICALLY AFTER 2 SECONDS
       setTimeout(() => {
-        const loginModal = bootstrap.Modal.getInstance(
-          document.getElementById("loginModal"),
-        );
+        const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
         if (loginModal) {
           loginModal.hide();
         }
       }, 2000);
     } catch (error) {
       console.error("Login failed:", error);
-      document.querySelector("#login-error").textContent =
-        "Login failed. Please check your credentials.";
-      showMessage(
-        "#login-error",
-        " Login failed. Please check your credentials.",
-        "danger",
-      );
+   
+       // Show error message
+      showMessage("#login-error", "Login failed. Please check your credentials.", "danger");
     }
   });

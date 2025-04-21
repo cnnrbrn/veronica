@@ -6,7 +6,7 @@ global.fetch = vi.fn();
 
 describe("registerUser", () => {
   it("should register a user successfully", async () => {
-    // ✅ Simulert API-respons (mock)
+    // Simulert API-respons (mock)
     const mockResponse = {
       ok: true,
       json: async () => ({
@@ -17,7 +17,7 @@ describe("registerUser", () => {
       }),
     };
 
-    fetch.mockResolvedValueOnce(mockResponse); // 🔄 Simulerer API-kallet
+    fetch.mockResolvedValueOnce(mockResponse); 
 
     const userData = {
       name: "TestUser",
@@ -27,7 +27,7 @@ describe("registerUser", () => {
 
     await registerUser(userData);
 
-    // ✅ Sjekker at `fetch()` ble kalt riktig
+    // Checking that `fetch()` was called correctly
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(fetch).toHaveBeenCalledWith(
       expect.stringContaining("auth/register"),
@@ -36,7 +36,7 @@ describe("registerUser", () => {
   });
 
   it("should throw an error if registration fails", async () => {
-    // ❌ Simulerer en API-feil
+    // Simulating an API error
     const mockErrorResponse = {
       ok: false,
       status: 400,
@@ -53,7 +53,7 @@ describe("registerUser", () => {
       password: "SecurePassword123",
     };
 
-    // ✅ Sjekker at feilen håndteres riktig
+    // Checks that the error is handled correctly
     await expect(registerUser(userData)).rejects.toThrow(
       "Registration failed with status 400",
     );

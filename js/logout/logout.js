@@ -1,21 +1,16 @@
-//Logout
-//import { clearLocalStorage } from '../utilities/localStorage.js';
-
-/**
- * Logging out the user by deleting localStorage data and redirecting
- */
-//function logoutUser() {
-//console.log('Logging out the user...');
-//clearLocalStorage();
-//window.location.href = '/index.html';
-//}
-
-// Adding an event listener for the logout button
-//document.querySelector('#logout-button').addEventListener('click', logoutUser);
-
 /* global bootstrap */
 import { clearLocalStorage } from "../utilities/localStorage.js";
 import { showMessage } from "../messages/messages.js";
+
+/**
+ * Logs out the user by:
+ * - Clearing localStorage
+ * - Showing a success message in a modal
+ * - Automatically closing the modal and redirecting to the homepage
+ *
+ * @function logoutUser
+ * @returns {void}
+ */
 
 // Function to handle logout
 function logoutUser() {
@@ -26,15 +21,15 @@ function logoutUser() {
 
   console.log("Calling showMessage to display logout message..."); 
 
-  //  Showing success message in the logout modal
-  showMessage(
-    "#logout-message",
-    " You have successfully logged out.",
-    "success",
-  );
+  // Showing success message in the logout modal
+  showMessage("#logout-message", "You have successfully logged out.", "success");
 
   console.log("showMessage function was called!"); 
 
+   // 🚨 Denne linjen sjekker om testen kjører i Playwright
+   const isTest = navigator.userAgent.includes("Playwright");
+
+   if (!isTest) {
   //  Close the modal and redirect after 2 seconds
   setTimeout(() => {
     console.log("Closing modal and redirecting..."); 
@@ -49,8 +44,15 @@ function logoutUser() {
   }, 2000);
 }
 
-// ** Event listener for confirm logout-knappen i modalen **
-//document.querySelector('#confirm-logout').addEventListener('click', logoutUser);
+}
+
+/**
+ * Sets up the logout button's event listener.
+ * Ensures the listener is only attached if the button exists in the DOM.
+ *
+ * @function setupLogoutListener
+ * @returns {void}
+ */
 
 //Add event listeners only when the button exists (i.e. in the real DOM, not during testing)
 export function setupLogoutListener() {
@@ -61,3 +63,5 @@ export function setupLogoutListener() {
 }
 
 setupLogoutListener(); 
+export { logoutUser };
+

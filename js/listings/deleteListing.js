@@ -1,6 +1,21 @@
 import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
+/**
+ * Deletes an auction listing by ID after user confirmation.
+ *
+ * Prompts the user for confirmation, sends a DELETE request to the API,
+ * and redirects to the homepage if successful.
+ * Shows an alert if the deletion succeeds or fails.
+ *
+ * @param {string} listingId - The unique ID of the auction listing to delete.
+ * @returns {Promise<void>}
+ *
+ * @example
+ * // Delete listing with ID "abc123"
+ * deleteListing("abc123");
+ */
+
 export async function deleteListing(listingId) {
   const accessToken = retrieveFromLocalStorage("accessToken");
 

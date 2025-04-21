@@ -3,12 +3,25 @@ import { placeBid } from "./placeBid.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { showMessage } from "../messages/messages.js";
 
+/**
+ * Initializes the bid modal and handles form submission for placing a bid.
+ *
+ * - Sets up event listener for when the modal is shown
+ * - Resets input and messages
+ * - On submit, retrieves listing data and places a bid
+ *
+ * @function handleBidModal
+ * @event DOMContentLoaded
+ * @returns {void}
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const bidModal = document.getElementById("bidModal");
   const bidForm = document.getElementById("bidForm");
   const bidAmountInput = document.getElementById("bidAmount");
   const listingIdInput = document.getElementById("listingId");
 
+   // When the modal is opened
   bidModal.addEventListener("show.bs.modal", (event) => {
     const button = event.relatedTarget;
     const listingId = button?.getAttribute("data-bid-id");

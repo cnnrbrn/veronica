@@ -6,12 +6,22 @@ import { fetchUserProfile } from "../profile/profile.js";
 import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";  
 
 /**
- * Sends bids to API and updates UI
- * @param {string} listingId - ID for the auction
- * @param {number} amount - Bid amount
- * @param {number} currentHighestBid - Highest existing bid
- * @param {function} [updateAuctionView] - (optional) Function to update auction view after bid
+ * Places a bid on a specific auction listing by sending the bid to the API.
+ * Displays feedback messages, closes modal, updates credits and listing view if successful.
+ *
+ * @param {string} listingId - The ID of the auction listing to place the bid on.
+ * @param {number} amount - The amount to bid (must be higher than currentHighestBid).
+ * @param {number} currentHighestBid - The current highest bid on the listing.
+ * @param {function} [updateAuctionView] - Optional callback to update auction UI after bidding.
+ *
+ * @returns {Promise<void>}
+ *
+ * @example
+ * ```js
+ * placeBid("abc123", 500, 400, refreshAuction);
+ * ```
  */
+
 export async function placeBid(listingId, amount, currentHighestBid, updateAuctionView) {
   console.log(" Starting bid submission...");
   console.log("listingId:", listingId);

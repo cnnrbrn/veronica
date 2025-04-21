@@ -1,3 +1,13 @@
+/**
+ * Displays a fullscreen loading spinner.
+ *
+ * - Avoids adding multiple spinners if one already exists
+ * - Appends a spinner overlay to the body
+ *
+ * @function showLoadingIndicator
+ * @returns {void}
+ */
+
 export function showLoadingIndicator() {
     console.log("Displaying loading indicator");
   
@@ -14,6 +24,13 @@ export function showLoadingIndicator() {
     document.body.appendChild(loader);
     console.log("The loading indicator was added to the DOM");
   }
+
+  /**
+ * Hides and removes the loading spinner from the DOM.
+ *
+ * @function hideLoadingIndicator
+ * @returns {void}
+ */
   
   export function hideLoadingIndicator() {
     console.log("Hiding loading indicator");

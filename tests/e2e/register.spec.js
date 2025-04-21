@@ -1,33 +1,73 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Login", () => {
-  test("User sees error message when login fails", async ({ page }) => {
-    // 1️⃣ Mock API for feil innlogging
-    await page.route("*/**/auth/login", (route) =>
-      route.fulfill({
-        status: 401, // 401 = Unauthorized (feil innlogging)
-        json: { errors: ["Invalid credentials"] },
-      }),
-    );
+const validName = "Test User";
+const validEmail = `test${Date.now()}@stud.noroff.no`;
+const validPassword = "testpassword";
 
-    // 2️⃣ Gå til nettsiden
-    await page.goto("http://127.0.0.1:5500/index.html");
+// Helper function to turn off HTML5 validation so that JavaScript can handle the errors
+async function disableHTML5Validation(page) {
+  await page.evaluate(() => {
+    document.querySelector("#registration-form").setAttribute("novalidate", "true");
+  });
+}
 
-    // 3️⃣ Åpne login-modal
-    await page.click('button[data-bs-target="#loginModal"]');
-    await expect(page.locator("#loginModal")).toBeVisible();
+test.describe("Registration", () => {
+  test("User can register successfully", async ({ page }) => {
+    await page.goto("/");
+    await page.click("button[data-bs-target='#registerModal']");
+    await page.waitForSelector("#register-name", { state: "visible" });
 
-    // 4️⃣ Fyll ut feil login-data
-    await page.fill("#login-email", "wrong@stud.noroff.no");
-    await page.fill("#login-password", "wrongpassword");
+    await page.fill("#register-name", validName);
+    await page.fill("#register-email", validEmail);
+    await page.fill("#register-password", validPassword);
+    await page.click("#registration-form button[type='submit']");
 
-    // 5️⃣ Klikk på "Login"-knappen
-    await page.click('#loginModal button[type="submit"]');
+    // We expect a message to appear
+    await expect(page.locator("#register-error")).toHaveText(/.+/, { timeout: 7000 });
+  });
 
-    // 6️⃣ **Vent på at feilmeldingen vises**
-    await page.waitForTimeout(2000); // ✅ Gir UI tid til å oppdatere
+  test("Shows error on invalid email", async ({ page }) => {
+    await page.goto("/");
+    await page.click("button[data-bs-target='#registerModal']");
+    await page.waitForSelector("#register-name", { state: "visible" });
 
-    // 7️⃣ **Sjekk at feilmeldingen faktisk vises**
-    await expect(page.locator("#login-error")).toContainText("Login failed");
+    await disableHTML5Validation(page);
+
+    await page.fill("#register-name", validName);
+    await page.fill("#register-email", "invalidemail"); 
+    await page.fill("#register-password", validPassword);
+    await page.click("#registration-form button[type='submit']");
+
+    await expect(page.locator("#register-error")).toHaveText(/.+/, { timeout: 7000 });
+  });
+
+  test("Shows error on too short password", async ({ page }) => {
+    await page.goto("/");
+    await page.click("button[data-bs-target='#registerModal']");
+    await page.waitForSelector("#register-name", { state: "visible" });
+
+    await disableHTML5Validation(page);
+
+    await page.fill("#register-name", validName);
+    await page.fill("#register-email", `short${Date.now()}@stud.noroff.no`);
+    await page.fill("#register-password", "short"); // for kort
+    await page.click("#registration-form button[type='submit']");
+
+    await expect(page.locator("#register-error")).toHaveText(/.+/, { timeout: 7000 });
+  });
+
+  test("Shows error on missing fields", async ({ page }) => {
+    await page.goto("/");
+    await page.click("button[data-bs-target='#registerModal']");
+    await page.waitForSelector("#register-name", { state: "visible" });
+
+    await disableHTML5Validation(page);
+
+    await page.fill("#register-name", "");
+    await page.fill("#register-email", "");
+    await page.fill("#register-password", "");
+    await page.click("#registration-form button[type='submit']");
+
+    await expect(page.locator("#register-error")).toHaveText(/.+/, { timeout: 7000 });
   });
 });

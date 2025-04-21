@@ -12080,6 +12080,20 @@ main {
 }
 
 /* Profile */
+.username-heading,
+.auction-title-heading,
+.contact-heading,
+.about-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.recent-bids-heading,
+.bidding-history-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .credits-value {
   color: #D96B52;
   font-style: italic;

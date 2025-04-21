@@ -2,6 +2,17 @@ import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { deleteListing } from "../listings/deleteListing.js";
 
+/**
+ * Handles editing and deletion of an auction listing on the detail page.
+ *
+ * - Adds event listeners to form and delete button after DOM is loaded
+ * - Sends a PUT request to update the auction listing
+ * - Sends a DELETE request to remove the auction listing
+ *
+ * @event DOMContentLoaded
+ * @returns {void}
+ */
+
 //  Wait until the DOM is ready.
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("editAuctionForm");
@@ -17,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return; //  Now we are inside a function (DOMContentLoaded), so it's allowed
   }
 
-  //  DELETE
+  //  DELETE auction listing
   deleteButton.addEventListener("click", () => {
     const auctionId = new URLSearchParams(window.location.search).get("id");
     deleteListing(auctionId);
   });
 
-  //  UPDATE
+  //  UPDATE auction listing
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 

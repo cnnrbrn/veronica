@@ -2,19 +2,19 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Logout", () => {
   test("User can log out and see success message", async ({ page }) => {
-    // 👉 Gå til nettsiden
+    // Go to the website
     await page.goto("http://127.0.0.1:5500/index.html");
 
-    // 👉 Åpne logout-modalen (hvis den finnes via knapp)
+    // Open the logout modal (if available via button)
     await page.click('button[data-bs-target="#logoutModal"]');
 
-    // 👉 Klikk på logout-knappen i modal
+    // Click the logout button in the modal
     await page.click("#confirm-logout");
 
-    // 👉 Vent til meldingen vises
+    // Wait until the message appears
     const logoutMessages = await page.locator("#logout-message").all();
 
-    // 👉 Finn meldingen som faktisk inneholder teksten
+    // Find the message that actually contains the text
     let foundSuccessMessage = false;
     for (const message of logoutMessages) {
       const text = await message.textContent();
@@ -24,10 +24,10 @@ test.describe("Logout", () => {
       }
     }
 
-    // ✅ Sørg for at vi fant riktig melding
+    // Make sure we found the right message
     expect(foundSuccessMessage).toBe(true);
 
-    // ✅ Bekreft at localStorage er tom for token
+    // Verify that localStorage is empty of tokens
     const accessToken = await page.evaluate(() =>
       localStorage.getItem("accessToken"),
     );

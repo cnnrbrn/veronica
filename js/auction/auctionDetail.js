@@ -4,6 +4,15 @@ import { fetchUserProfile } from "../profile/profile.js";
 import { placeBid } from "../bid/placeBid.js";
 import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
 
+/**
+ * Main entry point for the auction detail page.
+ * Retrieves auction ID from URL, fetches data, and initializes bid form listener.
+ *
+ * @example
+ * ```js
+ * // Will automatically run on page load
+ * ```
+ */
 
 async function main() {
   const params = new URLSearchParams(window.location.search);
@@ -33,9 +42,20 @@ async function main() {
 
 main();
 
+/**
+ * Fetches auction details and updates the DOM.
+ *
+ * @param {string} id - The ID of the auction listing.
+ * @returns {Promise<void>} Updates the DOM with auction info.
+ * @example
+ * ```js
+ * await getAuctionDetail("abc123");
+ * ```
+ */
+
 //  Get auction details
 async function getAuctionDetail(id) {
-  showLoadingIndicator(); // 👉 Start loader
+  showLoadingIndicator(); 
   try {
     const response = await fetch(`${API_BASE_URL}/auction/listings/${id}?_bids=true&_seller=true&_bidders=true`, {
       headers: {
@@ -44,7 +64,7 @@ async function getAuctionDetail(id) {
     });
 
     const { data } = await response.json();
-    console.log("📦 Auksjonsdata fra API:", data);
+    console.log(" Auksjonsdata fra API:", data);
 
     document.getElementById("auctionTitle").textContent = data.title;
     document.getElementById("auctionOwner").textContent = `By ${data.seller?.name || "Unknown"}`;
@@ -90,9 +110,19 @@ async function getAuctionDetail(id) {
     console.error(" Error retrieving auction:", error);
     document.body.innerHTML = "<p class='text-danger'>Could not load auction details..</p>";
   } finally {
-    hideLoadingIndicator(); // 👉 Skjul loader uansett hva som skjer
+    hideLoadingIndicator();
   }
 }
+
+/**
+ * Starts a countdown timer for the auction end time.
+ *
+ * @param {string} endTime - The ISO timestamp for when the auction ends.
+ * @example
+ * ```js
+ * startCountdown("2025-06-01T12:00:00Z");
+ * ```
+ */
 
 function startCountdown(endTime) {
   const timeLeftElement = document.getElementById("timeLeft");
@@ -119,6 +149,16 @@ function startCountdown(endTime) {
   updateCountdown();
   timer = setInterval(updateCountdown, 1000);
 }
+
+/**
+ * Renders bidding history in the DOM.
+ *
+ * @param {Array<Object>} bids - Array of bid objects with bidder info.
+ * @example
+ * ```js
+ * renderBiddingHistory([{ amount: 50, created: "2025-04-01T12:00:00Z", bidder: { name: "User", avatar: { url: "image.jpg" } } }]);
+ * ```
+ */
 
 //  Show bid history with avatar
 function renderBiddingHistory(bids = []) {

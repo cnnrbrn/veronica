@@ -2,6 +2,18 @@ import { API_KEY, API_BASE_URL, PROFILE_ENDPOINT } from "../config/constants.js"
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
 
+/**
+ * Handles fetching, rendering, and updating auction listings on the front page.
+ *
+ * - Fetches user-specific and general auction listings
+ * - Renders listings with images, countdown, highest bid, and buttons
+ * - Updates countdown timers every second
+ * - Supports "Show more" functionality
+ * - Allows other modules (like placeBid.js) to refresh the listing view
+ *
+ * @module getListings
+ */
+
 
 const container = document.querySelector("#listing-container");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
@@ -12,6 +24,13 @@ const accessToken = retrieveFromLocalStorage("accessToken");
 let userListings = [];
 let otherListings = [];
 let showAll = false;
+
+/**
+ * Calculates remaining time between now and the listing end date.
+ *
+ * @param {string} endsAt - ISO string for when the auction ends.
+ * @returns {string} Time remaining in format "Xd Xh Xm Xs" or "Ended".
+ */
 
 function formatTimeLeft(endsAt) {
   const now = new Date();
@@ -27,6 +46,15 @@ function formatTimeLeft(endsAt) {
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
+
+/**
+ * Fetches the current user's listings from the API.
+ * Loads the 9 newest, then fetches other listings.
+ *
+ * @async
+ * @function fetchUserListings
+ * @returns {Promise<void>}
+ */
 
 async function fetchUserListings() {
   if (!accessToken || !username) {
@@ -59,6 +87,14 @@ async function fetchUserListings() {
   }
 }
 
+/**
+ * Fetches other users' listings from the API.
+ * Filters out current user's listings if logged in.
+ *
+ * @async
+ * @function fetchOtherListings
+ * @returns {Promise<void>}
+ */
 
 async function fetchOtherListings() {
   try {
@@ -85,6 +121,13 @@ async function fetchOtherListings() {
     console.error("Error retrieving other people's auctions:", error);
   }
 }
+
+/**
+ * Renders listings to the DOM based on user state or provided custom array.
+ *
+ * @function renderListings
+ * @param {Array<Object>} [customListings=null] - Optional custom listings to render (e.g., from search/filter)
+ */
 
 export function renderListings(customListings = null) {
     const messageElement = document.getElementById("noResultsMessage");
@@ -162,6 +205,12 @@ export function renderListings(customListings = null) {
     loadMoreBtn.style.display = shouldShowButton ? "block" : "none";
   }
   
+/**
+ * Returns all auction listings (both user and others) as a combined array.
+ *
+ * @function getAllListings
+ * @returns {Array<Object>} All loaded auction listings.
+ */
 
 // Place this below along with renderListings
 export function getAllListings() {
@@ -181,9 +230,14 @@ loadMoreBtn.addEventListener("click", () => {
 
 fetchUserListings();
 
+/**
+ * Makes it possible for external files (e.g. placeBid.js) to refresh auction listings.
+ * @global
+ */
+
 // This allows placeBid.js to call it
 window.refreshListings = async function () {
-    await fetchUserListings(); // This will re-fetch everything and re-render
-  };
+    await fetchUserListings(); 
+};
 
   

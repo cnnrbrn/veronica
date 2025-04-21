@@ -2,6 +2,20 @@ import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
 
+/**
+ * Updates the user's profile (avatar and bio).
+ *
+ * - Retrieves access token and username from localStorage
+ * - Collects form input values for avatar and bio
+ * - Sends a PUT request to the API to update the profile
+ * - Updates UI on success and shows feedback message
+ * - Closes modal after success
+ *
+ * @async
+ * @function updateProfile
+ * @returns {Promise<void>}
+ */
+
 export async function updateProfile() {
   const accessToken = retrieveFromLocalStorage("accessToken");
   const username = retrieveFromLocalStorage("username");
@@ -36,7 +50,7 @@ export async function updateProfile() {
       throw new Error(data.errors?.[0]?.message || "Could not update profile.");
     }
 
-    // UI
+    // Update UI
     document.getElementById("profileAvatar").src = avatarUrl;
     document.getElementById("profileBio").textContent = bio;
 
@@ -59,6 +73,7 @@ export async function updateProfile() {
   }
 }
 
+// Attach event listener to profile form submit
 document.getElementById("editProfileForm").addEventListener("submit", (e) => {
   e.preventDefault();
   updateProfile();

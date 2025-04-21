@@ -3,6 +3,19 @@
 import { registerUser } from "../auth/auth.js";
 import { showMessage } from "../messages/messages.js"; 
 
+/**
+ * Handles the registration form submission.
+ *
+ * - Prevents default form behavior
+ * - Collects name, email, and password from the form
+ * - Calls `registerUser()` to attempt registration
+ * - Displays success or error messages
+ * - Closes the registration modal on success
+ *
+ * @async
+ * @function
+ */
+
 document
   .querySelector("#registration-form")
   .addEventListener("submit", async (event) => {
@@ -17,16 +30,10 @@ document
     try {
       console.log("Submit button clicked. Trying to register user...");
       await registerUser(userData);
-      console.log(
-        "Registration complete. The user is logged in and redirected to the home page.",
-      );
+      console.log("Registration complete. The user is logged in and redirected to the home page.");
 
       // Using the message function from `messages.js`
-      showMessage(
-        "#register-error",
-        " Registration successful! You can now log in.",
-        "success",
-      );
+      showMessage("#register-error", "Registration successful! You can now log in.", "success");
 
       //  Close modal automatically
       setTimeout(() => {
@@ -36,11 +43,7 @@ document
         registerModal.hide(); 
       }, 2000); 
     } catch (error) {
-      showMessage(
-        "#register-error",
-        " Registration failed. Please check your inputs.",
-        "danger",
-      );
+      showMessage("#register-error", "Registration failed. Please check your inputs.", "danger");
 
       console.error("Registration failed:", error);
     }

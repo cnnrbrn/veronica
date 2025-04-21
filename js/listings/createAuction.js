@@ -2,6 +2,22 @@
 import { API_BASE_URL, API_KEY } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
+/**
+ * Creates a new auction listing by sending form data to the API.
+ *
+ * - Collects values from the "Create Auction" form
+ * - Formats them into a listing object
+ * - Sends the listing as a POST request to the API
+ * - Shows alert, resets form, closes modal, and redirects on success
+ *
+ * @async
+ * @function createAuction
+ * @returns {Promise<void>}
+ *
+ * @example
+ * createAuction(); // Called on form submit
+ */
+
 export async function createAuction() {
   const accessToken = retrieveFromLocalStorage("accessToken");
   const title = document.getElementById("auctionTitle").value;
@@ -51,6 +67,11 @@ export async function createAuction() {
     alert("Failed to create auction.");
   }
 }
+
+/**
+ * Event listener that handles form submission for creating a new auction.
+ * Prevents default form submission and calls createAuction().
+ */
 
 document.getElementById("createAuctionForm").addEventListener("submit", (e) => {
   e.preventDefault();

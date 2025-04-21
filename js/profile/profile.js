@@ -4,6 +4,19 @@ import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 import { fetchMyBids } from "./userBids.js";
 import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.js";
 
+/**
+ * Fetches the logged-in user's profile data from the API.
+ *
+ * - Requires a valid username and access token from localStorage
+ * - Displays loading indicator while fetching
+ * - Updates profile UI elements if they exist
+ * - Also updates credits in the navbar
+ * - Logs errors to console if fetch fails
+ *
+ * @async
+ * @function fetchUserProfile
+ * @returns {Promise<void>}
+ */
 
 export async function fetchUserProfile() {
   const username = retrieveFromLocalStorage("username");

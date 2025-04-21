@@ -1,35 +1,25 @@
-//function showLogoutMessage() {
-//const message = sessionStorage.getItem('logoutMessage');
-//if (message) {
-//const messageDiv = document.querySelector('#logout-message');
-//messageDiv.textContent = message;
-//messageDiv.classList.remove('d-none');
+/**
+ * Displays a Bootstrap-style alert message in the specified container.
+ *
+ * - Accepts a selector to target a specific HTML element
+ * - Injects a Bootstrap alert with the desired message and style
+ * - Does nothing if the container is not found
+ *
+ * @function showMessage
+ * @param {string} selector - CSS selector for the container where the message should appear
+ * @param {string} message - The message text to display
+ * @param {string} [type="info"] - Bootstrap alert type (e.g., "success", "danger", "warning", "info")
+ *
+ * @example
+ * showMessage("#login-error", "Login successful!", "success");
+ */
 
-// Fjerner meldingen etter 3 sekunder
-//setTimeout(() => {
-//messageDiv.classList.add('d-none');
-//sessionStorage.removeItem('logoutMessage');
-//}, 3000);
-//}
-//}
-
-//document.addEventListener('DOMContentLoaded', showLogoutMessage);
-
-//export function showMessage(elementId, message, type = "success") {
-//const element = document.querySelector(elementId);
-//element.textContent = message;
-
-//if (type === "success") {
-//element.classList.remove("text-danger");
-//element.classList.add("text-success");
-//} else {
-//element.classList.remove("text-success");
-//element.classList.add("text-danger");
-//}
-//}
 export function showMessage(selector, message, type = "info") {
   const container = document.querySelector(selector);
   if (!container) return;
+
+    // 🔥 Fjern "d-none" slik at meldingen faktisk vises
+    container.classList.remove("d-none");
 
   container.innerHTML = `
       <div class="alert alert-${type} mt-2" role="alert">

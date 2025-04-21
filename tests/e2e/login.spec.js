@@ -1,63 +1,38 @@
 import { test, expect } from "@playwright/test";
+import dotenv from "dotenv";
+
+dotenv.config(); // Loads environment variables from .env
 
 test.describe("Login", () => {
-  test("User can log in successfully", async ({ page }) => {
-    // ✅ 1️⃣ Mock API for vellykket innlogging
-    await page.route("*/**/auth/login", (route) =>
-      route.fulfill({
-        status: 200,
-        json: { data: { accessToken: "fake-token", name: "TestUser" } },
-      }),
-    );
+  test("User can log in and token is saved", async ({ page }) => {
+    await page.goto("/");
 
-    // ✅ 2️⃣ Gå til nettsiden
-    await page.goto("http://127.0.0.1:5500/index.html");
+    // Open login modal
+    await page.click("button[data-bs-target='#loginModal']");
 
-    // ✅ 3️⃣ Åpne login-modal
-    await page.click('button[data-bs-target="#loginModal"]');
-    await expect(page.locator("#loginModal")).toBeVisible();
+    // Fill out the login form
+    await page.fill("#login-email", process.env.TEST_USER_EMAIL);
+    await page.fill("#login-password", process.env.TEST_USER_PASSWORD);
+    await page.click("#login-form button[type='submit']");
 
-    // ✅ 4️⃣ Fyll ut login-skjemaet
-    await page.fill("#login-email", "test@stud.noroff.no");
-    await page.fill("#login-password", "password123");
+    // Check that the token is stored in localStorage
+    await page.waitForFunction(() => localStorage.getItem("accessToken") !== null);
+    const token = await page.evaluate(() => localStorage.getItem("accessToken"));
+    console.log("Access token:", token);
+    expect(token).not.toBeNull();
 
-    // ✅ 5️⃣ Klikk på login-knappen
-    await page.click('#loginModal button[type="submit"]');
-
-    // ✅ 6️⃣ Vent på respons
-    await page.waitForTimeout(1000);
-
-    // ✅ 7️⃣ Sjekk at suksessmeldingen vises
-    await expect(page.locator("#login-error")).toHaveText(/Login successful/i);
+  // Check that "Credits" is displayed in the navbar (or other indicator of login)
+    await expect(page.locator("#credits")).toContainText("Credits");
   });
 
   test("User sees error message when login fails", async ({ page }) => {
-    // ❌ 1️⃣ Mock API for feilet innlogging
-    await page.route("*/**/auth/login", (route) =>
-      route.fulfill({
-        status: 401,
-        json: { errors: ["Invalid credentials"] },
-      }),
-    );
+    await page.goto("/");
+    await page.click("button[data-bs-target='#loginModal']");
+    await page.fill("#login-email", "feil@stud.noroff.no");
+    await page.fill("#login-password", "feilpassord");
+    await page.click("#login-form button[type='submit']");
 
-    // ❌ 2️⃣ Gå til nettsiden
-    await page.goto("http://127.0.0.1:5500/index.html");
-
-    // ❌ 3️⃣ Åpne login-modal
-    await page.click('button[data-bs-target="#loginModal"]');
-    await expect(page.locator("#loginModal")).toBeVisible();
-
-    // ❌ 4️⃣ Fyll ut login-skjemaet med feil passord
-    await page.fill("#login-email", "wrong@stud.noroff.no");
-    await page.fill("#login-password", "wrongpassword");
-
-    // ❌ 5️⃣ Klikk på login-knappen
-    await page.click('#loginModal button[type="submit"]');
-
-    // ❌ 6️⃣ Vent på respons
-    await page.waitForTimeout(1000);
-
-    // ❌ 7️⃣ Sjekk at feilmeldingen vises
-    await expect(page.locator("#login-error")).toContainText("Login failed");
+    // Check that an error message is displayed
+    await expect(page.locator("#login-error")).toContainText(/Login failed/i);
   });
 });

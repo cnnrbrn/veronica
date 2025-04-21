@@ -1,6 +1,19 @@
 import { API_KEY, API_BASE_URL } from "../config/constants.js";
 import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
+/**
+ * Fetches and displays the user's most recent bids per listing.
+ *
+ * - Gets the access token and username from localStorage
+ * - Sends a GET request to the bids endpoint
+ * - Filters to show only the latest bid per listing
+ * - Injects responsive Bootstrap cards into the DOM
+ *
+ * @async
+ * @function fetchMyBids
+ * @returns {Promise<void>}
+ */
+
 export async function fetchMyBids() {
   const username = retrieveFromLocalStorage("username");
   const accessToken = retrieveFromLocalStorage("accessToken");
