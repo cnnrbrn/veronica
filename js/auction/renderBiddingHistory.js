@@ -30,7 +30,7 @@ export function renderBiddingHistory(bids) {
   historyContainer.innerHTML = "";
 
   if (bids?.length) {
-    // Use slice() to not change the original array
+    // Use slice() to not change the original array.
     bids
       .slice()
       .reverse()
@@ -40,7 +40,7 @@ export function renderBiddingHistory(bids) {
         console.log(`Bid #${index + 1}:`, bid);  // Log the full bid object to inspect its structure
 
 
-        console.log(` Bid #${index + 1}:`, {
+        console.log(`Bid #${index + 1}:`, {
           name: bid.bidderName,
           amount: bid.amount,
           date: bidDate,

@@ -23,7 +23,7 @@ export async function fetchUserProfile() {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
   if (!username || !accessToken) {
-    console.error(" Missing username or token. User is not logged in.");
+    console.error("Missing username or token. User is not logged in.");
     return;
   }
 
@@ -53,8 +53,11 @@ export async function fetchUserProfile() {
     if (bioEl) bioEl.textContent = data.bio || "No bio yet";
 
     const avatarEl = document.getElementById("profileAvatar");
-    if (avatarEl) avatarEl.src = data.avatar?.url || "https://via.placeholder.com/300x300?text=Avatar";
-
+    if (avatarEl) {
+      avatarEl.src = data.avatar?.url || "https://via.placeholder.com/300x300?text=Avatar";
+      avatarEl.alt = data.avatar?.alt || "User avatar";
+    }
+    
     // Navbar credits appear on multiple pages
     const navbarCredits = document.getElementById("credits");
     if (navbarCredits) {
@@ -62,7 +65,7 @@ export async function fetchUserProfile() {
     }
 
   } catch (error) {
-    console.error(" Error retrieving user profile:", error);
+    console.error("Error retrieving user profile:", error);
   } finally {
     hideLoadingIndicator(); 
   }

@@ -14,35 +14,25 @@ import { showMessage } from "../messages/messages.js";
 
 // Function to handle logout
 function logoutUser() {
-  console.log("Logging out the user...");
-
-  // Clearing localStorage
   clearLocalStorage();
-
-  console.log("Calling showMessage to display logout message..."); 
-
-  // Showing success message in the logout modal
   showMessage("#logout-message", "You have successfully logged out.", "success");
 
-  console.log("showMessage function was called!"); 
-
-   // 🚨 Denne linjen sjekker om testen kjører i Playwright
+   // This line checks if the test is running in Playwright
    const isTest = navigator.userAgent.includes("Playwright");
 
    if (!isTest) {
-  //  Close the modal and redirect after 2 seconds
-  setTimeout(() => {
-    console.log("Closing modal and redirecting..."); 
-    const logoutModal = bootstrap.Modal.getInstance(
-      document.getElementById("logoutModal"),
-    );
-    if (logoutModal) {
-      logoutModal.hide();
-    }
-    //  Redirect to the front page
-    window.location.href = "/index.html";
-  }, 2000);
-}
+     setTimeout(() => {
+       const logoutModal = bootstrap.Modal.getInstance(
+         document.getElementById("logoutModal"),
+       );
+       if (logoutModal) {
+         logoutModal.hide();
+       }
+
+       // Redirect to the front page
+       window.location.href = "/index.html";
+     }, 2000);
+  }
 
 }
 
@@ -54,7 +44,7 @@ function logoutUser() {
  * @returns {void}
  */
 
-//Add event listeners only when the button exists (i.e. in the real DOM, not during testing)
+// Add event listeners only when the button exists (i.e. in the real DOM, not during testing)
 export function setupLogoutListener() {
   const button = document.querySelector("#confirm-logout");
   if (button) {

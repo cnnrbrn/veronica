@@ -21,7 +21,7 @@ export async function fetchLastChanceListings() {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
   if (!username || !accessToken) {
-    console.warn("User not logged in. Not showing carousel.");
+    //console.warn("User not logged in. Not showing carousel.");
     return;
   }
 

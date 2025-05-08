@@ -54,11 +54,11 @@ export async function updateProfile() {
     document.getElementById("profileAvatar").src = avatarUrl;
     document.getElementById("profileBio").textContent = bio;
 
-    //  Show success message
-    const messageContainer = document.getElementById("createAuctionMessage");
+    // Show success message
+    const messageContainer = document.getElementById("profileUpdateMessage");
     messageContainer.innerHTML = `<div class="alert alert-success">Profile updated successfully!</div>`;
 
-    //  Hide modal after 1.5 sec and remove message
+    // Hide modal after 1.5 sec and remove message
     setTimeout(() => {
       const modal = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
       modal.hide();

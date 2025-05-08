@@ -11903,6 +11903,7 @@ main {
 }
 
 .navbar {
+  --bs-navbar-padding-y: 1rem;
   color: #0C0D07;
   /*background-color: $color-box-background !important;*/
 }

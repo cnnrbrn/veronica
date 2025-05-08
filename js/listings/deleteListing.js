@@ -19,7 +19,7 @@ import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 export async function deleteListing(listingId) {
   const accessToken = retrieveFromLocalStorage("accessToken");
 
-  const confirmDelete = confirm(" Are you sure you want to delete this auction?");
+  const confirmDelete = confirm("Are you sure you want to delete this auction?");
   if (!confirmDelete) return;
 
   try {
@@ -36,7 +36,7 @@ export async function deleteListing(listingId) {
       throw new Error(data.errors?.[0]?.message || "Could not delete auction.");
     }
 
-    alert(" The auction was deleted!");
+    alert("The auction was deleted!");
     // For example, you can send the user back to the front page:
     window.location.href = "../../index.html";
   } catch (error) {

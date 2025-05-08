@@ -17,15 +17,12 @@ import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.
 async function main() {
   const params = new URLSearchParams(window.location.search);
   const listingId = params.get("id");
-  console.log(" Retrieved listing ID from URL:", listingId);
 
   if (!listingId) {
-    console.warn(" Not an auction details page. Stopping the script.");
     return;
   }
 
   const username = retrieveFromLocalStorage("username");
-  console.log(" Username from localStorage:", username);
   if (username) fetchUserProfile(username);
 
   await getAuctionDetail(listingId);
@@ -64,8 +61,7 @@ async function getAuctionDetail(id) {
     });
 
     const { data } = await response.json();
-    console.log(" Auksjonsdata fra API:", data);
-
+  
     document.getElementById("auctionTitle").textContent = data.title;
     document.getElementById("auctionOwner").textContent = `By ${data.seller?.name || "Unknown"}`;
     document.getElementById("auctionDescription").textContent = data.description;
@@ -73,11 +69,6 @@ async function getAuctionDetail(id) {
     // Show edit button only for owner
     const username = retrieveFromLocalStorage("username");
     const editButton = document.getElementById("editAuctionButton");
-
-    console.log(" Button found?", editButton);
-    console.log(" Username:", username);
-    console.log(" Auction seller:", data.seller?.name);
-    console.log(" Same user?", data.seller?.name?.toLowerCase() === username?.toLowerCase());
 
     if (data.seller?.name?.toLowerCase() === username?.toLowerCase()) {
       editButton.classList.remove("d-none");
@@ -101,13 +92,14 @@ async function getAuctionDetail(id) {
     const highestBid = data.bids?.length > 0
       ? Math.max(...data.bids.map((bid) => bid.amount))
       : 0;
+    
     document.getElementById("currentBid").textContent = `$${highestBid}`;
 
     startCountdown(data.endsAt);
     renderBiddingHistory(data.bids);
 
   } catch (error) {
-    console.error(" Error retrieving auction:", error);
+    console.error("Error retrieving auction:", error);
     document.body.innerHTML = "<p class='text-danger'>Could not load auction details..</p>";
   } finally {
     hideLoadingIndicator();
@@ -177,13 +169,6 @@ function renderBiddingHistory(bids = []) {
       const bidDate = new Date(bid.created).toLocaleString();
       const bidderName = bid.bidder?.name || "Unknown user";
       const avatar = bid.bidder?.avatar?.url || "https://via.placeholder.com/40";
-
-      console.log(` Bid #${index + 1}`, {
-        name: bidderName,
-        avatar,
-        amount: bid.amount,
-        date: bidDate,
-      });
 
       const item = document.createElement("div");
       item.className = "list-group-item";

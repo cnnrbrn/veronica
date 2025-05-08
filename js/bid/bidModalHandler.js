@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageContainer = document.querySelector("#bidMessageContainer");
     if (messageContainer) {
       messageContainer.innerHTML = "";
-      console.log("Removed old message after modal was displayed");
     }
 
     // Reset input field
@@ -40,10 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (listingId) {
       listingIdInput.value = listingId;
-      console.log("Modal opened for auction ID:", listingId);
-    } else {
-      console.warn("Could not find listingId in button");
-    }
+    } 
   });
 
   // When the bid form is submitted
@@ -54,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = Number(bidAmountInput.value);
 
     if (!listingId || !amount) {
-      console.warn("Missing input for bid");
       showMessage("#bidMessageContainer", " Fill in bid amount.", "error");
       return;
     }
@@ -78,11 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Math.max(...listingData.data.bids.map((b) => b.amount))
         : 0;
 
-      console.log("Current highest bid:", currentHighestBid);
-
       await placeBid(listingId, amount, currentHighestBid);
     } catch (error) {
-      console.error("Error retrieving auction data:", error);
       showMessage(
         "#bidMessageContainer",
         `Failed to retrieve bid information: ${error.message}`,

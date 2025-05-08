@@ -64,6 +64,7 @@ main {
 }
   
 .navbar {
+  --bs-navbar-padding-y: 1rem;
   color: $color-primary-dark;
   /*background-color: $color-box-background !important;*/
   
@@ -152,6 +153,7 @@ main {
   opacity: 1;
   border-radius: 16px;
 }
+
 .custom-carousel-wrapper {
   display: flex;
   overflow-x: hidden;
@@ -187,7 +189,7 @@ main {
 }
 
 .card-body {
-  color:$color-primary-dark
+  color:$color-primary-dark;
 }
 
 /* Headings */

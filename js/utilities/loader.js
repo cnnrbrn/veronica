@@ -9,7 +9,6 @@
  */
 
 export function showLoadingIndicator() {
-    console.log("Displaying loading indicator");
   
     // Check if it already exists to avoid multiple
     if (document.getElementById("loading-indicator")) return;
@@ -22,7 +21,6 @@ export function showLoadingIndicator() {
       </div>
     `;
     document.body.appendChild(loader);
-    console.log("The loading indicator was added to the DOM");
   }
 
   /**
@@ -33,7 +31,6 @@ export function showLoadingIndicator() {
  */
   
   export function hideLoadingIndicator() {
-    console.log("Hiding loading indicator");
   
     const loader = document.getElementById("loading-indicator");
     if (loader) {

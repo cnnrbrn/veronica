@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retrobid - Auction Detail</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    />
+    >
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
-    />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../../dist/css/style.css" />
+    >
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../dist/css/style.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -73,10 +73,10 @@
               <div class="overflow-hidden banner-img-container rounded-bottom-start">
                 <img
                   id="auctionImage"
-                  src=""
+                  src="#"
                   alt="Auction Image"
                   class="img-fluid banner-img"
-                />
+                >
               </div>
             </div>
 
@@ -171,7 +171,7 @@
         tabindex="-1"
         aria-labelledby="logoutModalLabel"
         aria-hidden="true"
-      >
+        >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -210,7 +210,7 @@
        tabindex="-1"
        aria-labelledby="bidModalLabel"
        aria-hidden="true"
-     >
+       >
        <div class="modal-dialog">
          <div class="modal-content">
            <form id="bidForm">
@@ -220,7 +220,7 @@
              </div>
              <div class="modal-body">
                <label for="bidAmount" class="form-label">Enter your bid amount:</label>
-               <input type="number" class="form-control" id="bidAmount" required />
+               <input type="number" class="form-control" id="bidAmount" required>
                <div id="bidMessageContainer" class="mt-3"></div>
              </div>
              <div class="modal-footer">
@@ -251,7 +251,7 @@
            <div class="modal-body">
              <div class="mb-3">
                <label for="editTitle" class="form-label">Title</label>
-               <input type="text" class="form-control" id="editTitle" required />
+               <input type="text" class="form-control" id="editTitle" required>
              </div>
              <div class="mb-3">
                <label for="editDescription" class="form-label">Description</label>
@@ -259,7 +259,7 @@
              </div>
              <div class="mb-3">
                <label for="editImage" class="form-label">Image URL</label>
-               <input type="url" class="form-control" id="editImage" />
+               <input type="url" class="form-control" id="editImage">
              </div>
              <div id="editMessageContainer" class="mt-2 text-center"></div>
            </div>
@@ -279,11 +279,11 @@
 
     <!-- Bootstrap og JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="../../js/auction/auctionDetail.js"></script>
-    <script type="module" src="/js/auction/editAuction.js"></script>
-    <script type="module" src="../../js/bid/placeBid.js"></script>
-    <script type="module" src="/js/logout/logout.js"></script>
-
+    <script type="module" src="../js/auction/auctionDetail.js"></script>
+    <script type="module" src="../js/auction/editAuction.js"></script>
+    <script type="module" src="../js/bid/placeBid.js"></script>
+    <script type="module" src="../js/logout/logout.js"></script>
+    
   </body>
 </html>
 

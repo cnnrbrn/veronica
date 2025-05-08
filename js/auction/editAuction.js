@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageInput = document.getElementById("editImage");
   const message = document.getElementById("editMessageContainer");
   const deleteButton = document.getElementById("deleteAuctionButton");
+  
 
   //  Don't use `return` here unless we are inside a function
   if (!form || !titleInput || !descInput || !imageInput || !message || !deleteButton) {
-    console.warn(" One or more form elements were not found in the DOM.");
-    return; //  Now we are inside a function (DOMContentLoaded), so it's allowed
+    return; 
   }
 
   //  DELETE auction listing
@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
 
       if (!response.ok) {
-        console.error(" Update error:", data.errors?.[0]?.message || data);
         message.innerHTML = `
           <div class="alert alert-danger">
             Update failed: ${data.errors?.[0]?.message || "Unknown error"}
@@ -75,11 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      console.log(" Update success:", data);
       message.innerHTML = `<div class="alert alert-success">Auction updated!</div>`;
       setTimeout(() => location.reload(), 1000);
     } catch (error) {
-      console.error(" Network error:", error);
       message.innerHTML = `<div class="alert alert-danger">Something went wrong. Please try again.</div>`;
     }
   });

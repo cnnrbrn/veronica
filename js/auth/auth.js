@@ -18,8 +18,6 @@ import { fetchUserProfile } from "../profile/profile.js";
  */
 export async function loginUser(email, password) {
   try {
-    console.log("Starting login for:", email);
-
     const response = await fetch(LOGIN_ENDPOINT, {
       method: "POST",
       headers: {
@@ -31,39 +29,25 @@ export async function loginUser(email, password) {
 
     const responseData = await response.json();
 
-    console.log("API response:", responseData); 
-
     if (!response.ok) {
       throw new Error(`Login failed with status ${response.status}`);
     }
 
-    // Retrieve token from the response (now from responseData.data.accessToken)
+    //  Retrieve token from responseData
     const token = responseData.data?.accessToken;
-
-    console.log("Extracted Token:", token); 
-
     const username = responseData.data?.name;
+
     if (!token) {
       throw new Error("Did not receive token from the API");
     }
 
-    console.log("Login successful! Received token:", token);
-
     // Save token, username, and email in localStorage
     storeInLocalStorage("accessToken", token);
-
-    console.log(
-      "Token stored in localStorage:",
-      localStorage.getItem("accessToken"),
-    ); 
-
     storeInLocalStorage("userEmail", email);
     storeInLocalStorage("username", username);
 
     // Get credits after login
     await fetchUserProfile(username); 
-
-    console.log("Token, username, and email saved in localStorage.");
 
     // Redirect to homepage after login
     window.location.href = "index.html"; 
@@ -93,8 +77,7 @@ export async function loginUser(email, password) {
 
 export async function registerUser(userData) {
   try {
-    console.log("Starting registration for:", userData.email);
-
+   
     const response = await fetch(REGISTER_ENDPOINT, {
       method: "POST",
       headers: {
@@ -105,30 +88,17 @@ export async function registerUser(userData) {
     });
 
     const responseData = await response.json();
-    console.log("Received response data:", responseData);
-
+  
     if (!response.ok) {
-      console.error(`Registration failed with status ${response.status}`);
-      console.error(
-        " API error message:",
-        JSON.stringify(responseData.errors, null, 2),
-      );
       throw new Error(`Registration failed with status ${response.status}`);
     }
-
-    console.log("Registration successful! User created:", responseData);
 
     // Get credits after registration
     await fetchUserProfile(userData.name); 
 
-    console.log(
-      `New user: ${responseData.data.name} (${responseData.data.email})`,
-    );
-
     // Redirect to the login page after registration
     window.location.href = "index.html";
   } catch (error) {
-    console.error("Error registering user:", error);
     throw error;
   }
 }

@@ -53,14 +53,16 @@ export async function fetchMyBids() {
 
     container.innerHTML = latestBids.map(bid => {
       const image = bid.listing.media?.[0]?.url || "https://via.placeholder.com/300x300?text=Auction";
-      const title = bid.listing.title;
+      const title = bid.listing.title || "Untitled";
       const amount = bid.amount;
       const created = new Date(bid.created).toLocaleString();
+      const alt = bid.listing.media?.[0]?.alt || title;
+
 
       return `
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="${image}" class="card-img-top object-fit-cover" style="height: 200px;" alt="${title}" />
+            <img src="${image}" class="card-img-top object-fit-cover" style="height: 200px;" alt="${alt}" />
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">${title}</h5>
               <p><strong>Your bid:</strong> $${amount}</p>

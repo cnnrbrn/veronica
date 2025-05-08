@@ -23,11 +23,6 @@ import { showLoadingIndicator, hideLoadingIndicator } from "../utilities/loader.
  */
 
 export async function placeBid(listingId, amount, currentHighestBid, updateAuctionView) {
-  console.log(" Starting bid submission...");
-  console.log("listingId:", listingId);
-  console.log("amount:", amount);
-  console.log("currentHighestBid:", currentHighestBid);
-
   const accessToken = retrieveFromLocalStorage("accessToken");
   const username = retrieveFromLocalStorage("username");
 
@@ -67,14 +62,12 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
     );
 
     const data = await response.json();
-    console.log(" Bid sent, response:", data);
 
     if (!response.ok) {
       throw new Error(data.errors?.[0]?.message || "Something went wrong");
     }
 
     showMessage("#bidMessageContainer", " Your bid has been placed!", "success");
-
     await fetchUserProfile(username);
 
     //  Refresh view on detail page or front page
@@ -91,7 +84,7 @@ export async function placeBid(listingId, amount, currentHighestBid, updateAucti
       if (modalInstance) modalInstance.hide();
     }, 1500);
   } catch (error) {
-    console.error(" Bid error:", error);
+
     showMessage(
       "#bidMessageContainer",
       `Couldn't send a message: ${error.message}`,

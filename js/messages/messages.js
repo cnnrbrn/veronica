@@ -18,7 +18,7 @@ export function showMessage(selector, message, type = "info") {
   const container = document.querySelector(selector);
   if (!container) return;
 
-    // 🔥 Fjern "d-none" slik at meldingen faktisk vises
+    // Remove "d-none" so that the message actually appears
     container.classList.remove("d-none");
 
   container.innerHTML = `

@@ -19,8 +19,8 @@ import { retrieveFromLocalStorage } from "../utilities/localStorage.js";
 
 const accessToken = retrieveFromLocalStorage("accessToken");
 if (!accessToken) {
-  alert("Du må være logget inn for å sende inn auksjoner.");
-  throw new Error("Token mangler");
+  alert("You must be logged in to submit auctions.");
+  throw new Error("Token is missing");
 }
 
 // Set end date 5 months and 3 weeks in the future
@@ -141,7 +141,7 @@ const listings = [
  */
 
 async function createListing(listing) {
-  const response = await fetch("https://v2.api.noroff.dev/auction/listings", {
+  const response = await fetch(`${API_BASE_URL}/auction/listings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -157,11 +157,22 @@ async function createListing(listing) {
     console.error("Error:", data.errors || response.statusText);
     return;
   }
-
-  console.log("Listing sent:", data.data.title);
 }
 
-// Send all 9
-for (const listing of listings) {
-  await createListing(listing);
+/**
+ * Loops over all predefined auctions and sends them to the API
+ */
+async function main() {
+  try {
+    for (const listing of listings) {
+      await createListing(listing);
+    }
+  } catch (error) {
+    console.error("Something went wrong while submitting listings:", error);
+  }
 }
+
+// Start the upload process
+main();
+
+

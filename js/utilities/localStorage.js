@@ -31,5 +31,4 @@ export function retrieveFromLocalStorage(key) {
 export function clearLocalStorage() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("userEmail");
-  console.log("All user data cleared from localStorage.");
 }

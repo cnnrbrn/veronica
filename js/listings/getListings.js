@@ -108,8 +108,7 @@ async function fetchOtherListings() {
     );
 
     const { data } = await response.json();
-    console.log("All auctions:", data);
-
+  
     if (username) {
       otherListings = data.filter((listing) => listing.seller?.name !== username);
     } else {
