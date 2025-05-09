@@ -1,25 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retrobid - Profile</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    >
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
-    >
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../dist/css/style.css">
+    />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../dist/css/style.css" />
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-white">
       <div class="container">
-        <a class="navbar-brand" href="../../index.html"><span>Retro</span><span>bid</span></a>
+        <a class="navbar-brand" href="../../index.html"
+          ><span>Retro</span><span>bid</span></a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -34,7 +36,11 @@
               <a class="nav-link" href="../../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link hover-underline active" href="../profile/profile.html">Profile</a>
+              <a
+                class="nav-link hover-underline active"
+                href="../profile/profile.html"
+                >Profile</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../about/about.html">About</a>
@@ -71,14 +77,20 @@
               src="https://via.placeholder.com/300x300?text=Avatar"
               alt="Black record player with a person sitting cross-legged in the background."
               class="img-fluid rounded-circle"
-            >
+            />
           </div>
 
           <!-- Info -->
           <div class="col-md-6">
             <h1 id="profileUsername" class="username-heading">Username</h1>
-            <p><span class="fw-bold">Email:</span> <span id="profileEmail">user@noroff.no</span></p>
-            <p><span class="fw-bold">Credits:</span> <span id="profileCredits" class="credits-value">725</span></p>
+            <p>
+              <span class="fw-bold">Email:</span>
+              <span id="profileEmail">user@noroff.no</span>
+            </p>
+            <p>
+              <span class="fw-bold">Credits:</span>
+              <span id="profileCredits" class="credits-value">725</span>
+            </p>
             <p id="profileBio">No bio yet</p>
 
             <div class="d-flex gap-3">
@@ -115,7 +127,10 @@
           <!-- Contact Info -->
           <div class="col-md-4 mb-4 mb-md-0">
             <h5>
-              <a href="../contact/contact.html" class="text-decoration-none custom-footer-link">
+              <a
+                href="../contact/contact.html"
+                class="text-decoration-none custom-footer-link"
+              >
                 Contact Us
               </a>
             </h5>
@@ -124,146 +139,203 @@
           </div>
 
           <!-- Social Media -->
-          <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center">
+          <div
+            class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center"
+          >
             <h5>Follow Us</h5>
             <div class="d-flex gap-3 justify-content-center mt-2">
-              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="custom-footer-icon icon-accent"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" class="custom-footer-icon icon-accent"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a href="#" class="custom-footer-icon icon-accent"
+                ><i class="bi bi-instagram"></i
+              ></a>
             </div>
           </div>
 
           <!-- Copyright -->
-          <div class="col-md-4 d-flex align-items-center justify-content-md-end justify-content-center">
+          <div
+            class="col-md-4 d-flex align-items-center justify-content-md-end justify-content-center"
+          >
             <p class="mb-0">&copy; Retrobid. All rights reserved</p>
           </div>
         </div>
       </div>
     </footer>
 
-     <!-- Logout Modal -->
-     <div
-     class="modal fade"
-     id="logoutModal"
-     tabindex="-1"
-     aria-labelledby="logoutModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog modal-dialog-centered">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <p>Are you sure you want to log out?</p>
-           <div id="logout-message" class="alert d-none text-center"></div>
-         </div>
-         <div class="modal-footer">
-           <button
-             type="button"
-             class="btn btn-secondary fw-bold"
-             data-bs-dismiss="modal"
-           >
-             Cancel
-           </button>
-           <button type="button" class="btn btn-primary fw-bold" id="confirm-logout">
-             Logout
-           </button>
-         </div>
-       </div>
-     </div>
-   </div>   
+    <!-- Logout Modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to log out?</p>
+            <div id="logout-message" class="alert d-none text-center"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary fw-bold"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary fw-bold"
+              id="confirm-logout"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Modal: Create Auction -->
     <div
-    class="modal fade"
-    id="createAuctionModal"
-    tabindex="-1"
-    aria-labelledby="createAuctionModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="createAuctionForm">
-          <div class="modal-header">
-            <h5 class="modal-title" id="createAuctionModalLabel">Create Auction</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="auctionTitle" class="form-label">Title</label>
-              <input type="text" class="form-control" id="auctionTitle" required>
+      class="modal fade"
+      id="createAuctionModal"
+      tabindex="-1"
+      aria-labelledby="createAuctionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="createAuctionForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createAuctionModalLabel">
+                Create Auction
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
             </div>
-            <div class="mb-3">
-              <label for="auctionDescription" class="form-label">Description</label>
-              <textarea class="form-control" id="auctionDescription" rows="3"></textarea>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="auctionTitle" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="auctionTitle"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="auctionDescription" class="form-label"
+                  >Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="auctionDescription"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="auctionEndsAt" class="form-label">Ends At</label>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="auctionEndsAt"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="auctionMedia" class="form-label">Image URL</label>
+                <input type="url" class="form-control" id="auctionMedia" />
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="auctionEndsAt" class="form-label">Ends At</label>
-              <input type="datetime-local" class="form-control" id="auctionEndsAt" required>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary fw-bold"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">
+                Publish
+              </button>
             </div>
-            <div class="mb-3">
-              <label for="auctionMedia" class="form-label">Image URL</label>
-              <input type="url" class="form-control" id="auctionMedia">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary fw-bold">Publish</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal: Edit Profile -->
-  <div
-    class="modal fade"
-    id="editProfileModal"
-    tabindex="-1"
-    aria-labelledby="editProfileModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="editProfileForm">
-          <div class="modal-header">
-            <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="editAvatarUrl" class="form-label">Avatar URL</label>
-              <input type="url" class="form-control" id="editAvatarUrl">
+    <!-- Modal: Edit Profile -->
+    <div
+      class="modal fade"
+      id="editProfileModal"
+      tabindex="-1"
+      aria-labelledby="editProfileModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="editProfileForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProfileModalLabel">
+                Edit Profile
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
             </div>
-            <div class="mb-3">
-              <label for="editBio" class="form-label">Bio</label>
-              <textarea class="form-control" id="editBio" rows="3"></textarea>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="editAvatarUrl" class="form-label">Avatar URL</label>
+                <input type="url" class="form-control" id="editAvatarUrl" />
+              </div>
+              <div class="mb-3">
+                <label for="editBio" class="form-label">Bio</label>
+                <textarea class="form-control" id="editBio" rows="3"></textarea>
+              </div>
+              <div id="profileUpdateMessage" class="mt-3 text-center"></div>
             </div>
-            <div id="profileUpdateMessage" class="mt-3 text-center"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary fw-bold">Save Changes</button>
-          </div>
-        </form>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary fw-bold"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="../../js/profile/profile.js"></script>
-    <script type="module" src="../../js/profile/editProfile.js"></script>
-    <script type="module" src="../../js/profile/userBids.js"></script>
-    <script type="module" src="../../js/listings/createAuction.js"></script>
-    <script type="module" src="../../js/logout/logout.js"></script>
-
+    <script type="module" src="/js/profile/profile.js"></script>
+    <script type="module" src="/js/profile/editProfile.js"></script>
+    <script type="module" src="/js/profile/userBids.js"></script>
+    <script type="module" src="/js/listings/createAuction.js"></script>
+    <script type="module" src="/js/logout/logout.js"></script>
   </body>
 </html>
