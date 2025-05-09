@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrobid - About Us</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    >
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../dist/css/style.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="../../index.html">
+          <span>Retro</span><span>bid</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../profile/profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact/contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <span id="credits" class="nav-link">Credits: Loading...</span>
+            </li>
+            <li class="nav-item">
+              <button
+                class="btn btn-danger ms-lg-3 fw-bold"
+                id="logout-button"
+                data-bs-toggle="modal"
+                data-bs-target="#logoutModal"
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow-1">
+      <!-- About Us section -->
+      <div class="container my-5">
+        <div class="p-4 p-md-5 rounded shadow-sm bg-light">
+          <div class="row g-5">
+            <!-- Left picture -->
+            <div class="col-md-6">
+              <div class="overflow-hidden banner-img-container rounded-bottom-start">
+                <img
+                  src="/images/lpimage.jpg"
+                  alt="LP record with orange color and a hand in the background"
+                  class="img-fluid banner-img rounded"
+                >
+              </div>
+            </div>
+
+            <!-- Right text content -->
+            <div class="col-md-6">
+              <h1 class="about-heading">About Us</h1>
+              <p class="mt-3">
+                At <strong class="text-accent">Retrobid</strong>, we are passionate about retro culture!<br>
+                Here, you can find rare unique vintage treasures, from classic vinyl records and iconic walkmans to retro gaming consoles and collectible items.
+              </p>
+              <p>
+                We give you the chance to bid, buy, and sell nostalgic gems from the past.
+                Whether you're a collector, a nostalgia enthusiast, or simply love vintage items, this is the place for you!
+              </p>
+              <p>
+                <strong class="text-accent">Ready to travel back in time?</strong> Explore our auctions now!
+              </p>
+
+              <!-- Button to the front page -->
+              <a href="../../index.html" class="btn btn-primary mt-3 fw-bold">Let’s Bid!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-white text-center text-md-start mt-5 py-4 border-top">
+      <div class="container">
+        <div class="row text-center text-md-start">
+          <!-- Contact Info -->
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5>
+              <a href="../contact/contact.html" class="text-decoration-none custom-footer-link">
+                Contact Us
+              </a>
+            </h5>
+            <p class="mb-1">retrobid@gmail.com</p>
+            <p>Street 25 US 3458</p>
+          </div>
+
+          <!-- Social Media -->
+          <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center">
+            <h5>Follow Us</h5>
+            <div class="d-flex gap-3 justify-content-center mt-2">
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="custom-footer-icon icon-accent"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="col-md-4 d-flex align-items-center justify-content-md-end justify-content-center">
+            <p class="mb-0">&copy; Retrobid. All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Logout Modal -->
+    <div
+    class="modal fade"
+    id="logoutModal"
+    tabindex="-1"
+    aria-labelledby="logoutModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to log out?</p>
+          <div id="logout-message" class="alert d-none text-center"></div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary fw-bold"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary fw-bold" id="confirm-logout">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../../js/app.js"></script>
+    <script type="module" src="../../js/logout/logout.js"></script>
+
+  </body>
+</html>
+
