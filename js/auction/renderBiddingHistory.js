@@ -18,7 +18,6 @@
  * ```
  */
 export function renderBiddingHistory(bids) {
-  console.log("Bid list received:", bids);
 
   const historyContainer = document.getElementById("biddingHistory");
 
@@ -37,15 +36,6 @@ export function renderBiddingHistory(bids) {
       .forEach((bid, index) => {
         const bidDate = new Date(bid.created).toLocaleString();
 
-        console.log(`Bid #${index + 1}:`, bid);  // Log the full bid object to inspect its structure
-
-
-        console.log(`Bid #${index + 1}:`, {
-          name: bid.bidderName,
-          amount: bid.amount,
-          date: bidDate,
-        });
-
         const item = document.createElement("div");
         item.className = "list-group-item";
         item.innerHTML = `
@@ -58,7 +48,6 @@ export function renderBiddingHistory(bids) {
         historyContainer.appendChild(item);
       });
   } else {
-    console.warn("No bids found - shows default message");
     historyContainer.innerHTML = "<p class='text-muted'>No bids yet.</p>";
   }
 }
